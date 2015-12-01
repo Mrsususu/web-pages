@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Su's BBC</title>
+	<link rel="stylesheet" type="text/css" href="SuBBC.css">
+</head>
+<body>
+	<div id="container">
+		<div id="topbar">
+			<div class="fixedwidth">
+				<div id="logodiv">
+					<img src="images/bbclogo.png">
+				</div>
+				<div id="signindiv">
+					<img src="images/signin.png">
+					Sign In
+				</div>
+				<div id="topmenudiv">
+					<ul>
+						<li><a href="#">News</a></li>
+						<li><a href="#">Sport</a></li>
+						<li><a href="#">Weather</a></li>
+						<li><a href="#">iPlayer</a></li>
+						<li><a href="#">TV</a></li>
+						<li><a href="#">Radio</a></li>
+						<li><a href="#">More...</a></li>
+					</ul>					
+				</div>
+				<div class="searchdiv"> <!--用class是因为可能后面还有类似的搜索框-->
+					<form action="">
+						<input class="text" type="text" placeholder="Search"/> <!--placeholder属性为提示值，即点入后消失；value为元素值，即点入后值依然在-->
+						<input class="btn" type="submit" value=""/><!--此处为搜索的提交按键--> <!--注意此处一定要设置value=""，不然的话会有默认的value值，默认value值为“提交”两个字-->
+					</form>
+								
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

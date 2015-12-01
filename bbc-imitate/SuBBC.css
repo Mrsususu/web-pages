@@ -1,0 +1,91 @@
+
+body, ul, li, input, form {
+	padding: 0;
+	margin: 0;
+	font-family: verdana,helvetica,arial,sans-serif;/*来自原网页的body中font-family的值，也就是f12观察*/
+}
+li { list-style: none; }
+img { border: none; } /*有些浏览器比如IE，会给img默认添加蓝色边框*/
+a, a:hover { text-decoration: none; }
+
+#topbar {
+	background-color: #7A0000;
+	width: 100%;
+	height: 40px;
+	color: white;
+}
+
+.fixedwidth {
+	width: 1050px;
+	margin: 0 auto;
+	overflow: hidden;
+	position: relative; /*目标是让.searchdiv进行定位*/
+}/*此为固定居中布局*/ /*注意其里面都是浮动元素，所以需要撑开，不然没有设置高度的话，其一直高度为0*/
+
+#logodiv {
+	padding-top: 5px;
+	border-right: 1px solid #990000;
+	padding-right: 10px;
+	float: left;/*为了使得后面新加入的div会不显示在此div后面，而是显示在其右边*/
+	height: 35px;  /*高度为40px-(5px的padding)*/ /*如果直接设置height为40px，那就需要对img进行定位，而img作为内联元素，定位比较困难(如果想定位的话就用position:relative; top:XX;定位其在盒子中的为位置。不然的话位置就是默认左上角)*/
+}
+
+#signindiv {
+	font-size: 14px;
+	font-weight: bold;
+	border-right: 1px solid #990000;
+	padding: 4px 60px 11px 20px;/*【help!】疑惑点是，为什么content是89*25，当图片和文字在一起的时候，外部盒子的content是怎么确定的？*/
+	float: left;
+}
+
+#signindiv img {
+	position: relative;
+	top: 5px;
+}
+
+#topmenudiv, #topmenudiv ul {
+	float: left;
+} /*注意，这两个都要设置浮动，撑开元素*/
+
+#topmenudiv li {
+	font-weight: bold;
+	font-size: 0.9em;
+	float: left;
+	line-height: 40px; /*使用line-height使其字体居中，并且content高度为40px*/
+	padding: 0 20px 0 20px;/*两边设置padding*/
+	border-right: 1px solid #990000;
+}
+
+#topmenudiv a {
+	color: white;
+} /*a标签没有href属性的时候，颜色是黑色；有了href属性后，颜色变为#72ACE3，因而需要改颜色为white*/
+
+/*searchdiv框整体相对于.fixedwidth进行定位*/ /*然后其又成了内部两个input的父级定位元素。内部的两个input可以相对于这个searchdiv框进行定位*/
+.searchdiv {
+	width: 120px;
+	height: 25px;
+	background: url(images/magnify.png) no-repeat top right;
+	position: absolute; /*相对于外围的.fixedwidth的定位*/
+	top: 5px;
+	right: 0;
+}
+
+/*input默认有width、height、border、outline、background(默认为白色，如果none之后，则背景直接无色了)*/
+.searchdiv .text {
+	width: 90px; /*120px-30px，即search框总长度-submit框长度=输入框长度*/
+	height: 25px;
+	border: none; /*注意去掉border,这个border一定要在input实际位置设置去掉，而不能在外边去掉。注意，在其父元素中设置不会起作用！*/
+	outline: none; /*outline: none;是由于chrome下input默认会添加一个框，需要把这个框去掉*/
+	position: absolute; /*相对于外围的searchdiv框定位*/
+} /*input框的width和height需要自己设置，不然就是浏览器默认值*/
+
+/*submit框一旦没有value，其宽度就为0，因而需要重新设定宽度*/ /*其内容为一个搜索的图片，该图片大小正好为btn的大小30*25*/
+.searchdiv .btn {
+	width: 30px;
+	height: 25px;
+	border: none; /*注意去掉border*/
+	background: none;
+	position: absolute; /*相对于外围的searchdiv框定位*/
+	right: 0;
+	top: 0;
+}
