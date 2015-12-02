@@ -1,12 +1,14 @@
 
-body, ul, li, input, form {
+body, ul, li, input, form, p, h1, h2 {
 	padding: 0;
 	margin: 0;
 	font-family: verdana,helvetica,arial,sans-serif;/*来自原网页的body中font-family的值，也就是f12观察*/
 }
 li { list-style: none; }
 img { border: none; } /*有些浏览器比如IE，会给img默认添加蓝色边框*/
-a, a:hover { text-decoration: none; }
+a { color: white; } /*a标签没有href属性的时候，颜色是黑色；有了href属性后，颜色变为#72ACE3，因而需要改颜色为white*/
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
 
 #topbar {
 	background-color: #7A0000;
@@ -56,10 +58,9 @@ a, a:hover { text-decoration: none; }
 	border-right: 1px solid #990000;
 }
 
-#topmenudiv a {
-	color: white;
-} /*a标签没有href属性的时候，颜色是黑色；有了href属性后，颜色变为#72ACE3，因而需要改颜色为white*/
-
+#topmenudiv a:hover { 
+	text-decoration: none; 
+}
 /*searchdiv框整体相对于.fixedwidth进行定位*/ /*然后其又成了内部两个input的父级定位元素。内部的两个input可以相对于这个searchdiv框进行定位*/
 .searchdiv {
 	width: 120px;
@@ -89,3 +90,213 @@ a, a:hover { text-decoration: none; }
 	right: 0;
 	top: 0;
 }
+
+#newsbar {
+	background-color: #990000;
+	width: 100%;
+	height: 100px;
+	color: white;
+}
+
+#newsheader {
+	float: left;
+	padding-top: 10px;
+	font-size: 3em;
+}
+
+#uk {
+	padding-left: 20px;
+	font-size: 0.7em; /*这个相对大小是在其父元素的基础上，也就是NEWS的3em基础上的相对变化*/
+}
+
+/*对于图片的垂直居中，还没有比较好的解决方法。【待修改中....】*/
+#rss {
+	float: right;
+	padding-top: 45px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+
+}	
+
+#rss img {
+	padding-left: 5px;
+}
+
+.break {
+	clear: both;
+}
+
+#topicmenu, #topicmenu ul {
+	float: left;
+	width: 1050px;	
+	height: 25px;
+}
+
+#topicmenu {
+	margin-top: 7px; 
+}
+
+#topicmenu ul {
+	background-color: #3E0C0D;
+}
+
+#topicmenu li {
+	float: left;
+	font-size: 0.8em;
+	line-height: 25px;
+	padding: 0 5px 0 5px;
+	border-right: 1px solid #990000;
+}
+
+#topicmenu .final {
+	border-right: none;
+}
+
+#topicmenu .active {
+	background-color: #EDEDED;
+}
+
+#topicmenu .active a {
+	color: #505050;
+}
+
+#content {
+	width: 100%;
+	color: #535353;
+	font-size: 0.7em;
+}
+
+#content a {
+	color: #535353;
+}
+
+#main {
+	float: left;
+	width: 625px;
+} /*布局。左边栏，长度自己测量的*/
+
+#side {
+	float: right;
+	width: 396px;
+}
+
+#main>p {
+	margin-top: 10px;
+}
+
+#main .date {
+	font-weight: bold;
+}
+
+#main h1 {
+	font-size: 2.5em;
+	height: 50px;
+	line-height: 50px;
+}
+
+#main h1 a {
+	color: #1F4F82;
+}
+
+#main img {
+	float: left;
+}
+
+#main .newsitem {
+	float: left;
+	width: 230px;
+	margin-left: 10px;
+}
+
+#main .newsitem p:first-child {
+	margin-bottom: 10px; 
+}/*注意此处，伪类选择器的使用*/
+
+#main .links {
+	line-height: 1.5em;
+}
+
+#main .links a {
+	color: #1F4F82;
+}
+
+.newsitem .video {
+	background: url(images/triangle.png) no-repeat left center;
+	padding-left: 20px;
+}
+
+.newsitem .sound {
+	background: url(images/sound.png) no-repeat left center;
+	padding-left: 20px;
+}
+
+#side .watchlisten {
+	float: left;
+	background-color: #EEEEEE;
+	width: 396px; 
+	/*height: 196px;  /*不要设置高，让高自适应*/
+	margin-top: 16px; 
+}
+
+.watchlisten h2 {
+	color: #43403B;
+	font-size: 2em;
+	line-height: 40px;
+}
+
+.watchlisten .box {
+	float: right;
+	padding-left: 2px;
+	margin-top: 20px; 
+}
+
+.watchlisten .box:first-child {
+	padding-right: 5px;
+} /*该选择是使最右边的一个正方形图标，与最右侧有距离5px*/
+
+.leftarrow {
+	float: left;
+	border-right: 1px solid white;
+}
+
+.wlblock {
+	float: left;
+	background-color: #D1700E; 
+	width: 169px;
+	height: 146px;
+	border-right: 1px solid white;
+}
+
+.wlblock p {
+	padding: 5px;
+}
+
+#side .wlblock a {
+	color: white; 
+}
+
+.rightarrow {
+	float: left;
+}
+
+.watchlisten ul {
+	float: left;
+	width: 376px; /*396px-10px*2=376px*/
+	margin: 0 10px 0 10px;
+} 
+
+.watchlisten li {
+	background: url(images/live.png) no-repeat left center;
+	padding: 5px 0 5px 30px;
+	border-bottom: 1px solid #DDDDDD;
+}/*live列表每个li的下边线*/
+
+#side .watchlisten li a {
+	color: #1F4F82;
+} 
+
+.watchlisten li:last-child {
+	border-bottom: none;
+} /*live列表最底下的下边线需取消*/
+
