@@ -45,13 +45,12 @@ body {
 }
 
 #toggles {
-	width: 200px;
+	width: 197px; /*微调，保证result格子有合适的位置*/
 	margin: 5px auto;
 	height: 30px; /*上下两个配合使得居中，也可以设置position：relative，然后直接移动定位*/
 	border: 1px solid grey;
 	border-radius: 3px;
-	
-	
+		
 } /*一般margin在水平方向比较起作用。此处#toggles盒子的宽度为整个width宽度，因为另外两个元素都是float的*/
 
 #toggles li {
@@ -62,20 +61,39 @@ body {
 }
 
 .codeContainer {
-	background-color: red;
+	position: relative;
 	width: 50%;
-
+	float: left;  /*注意要设置这个浮动*/
 }
 
 .codeContainer textarea {
 	height: 100%;
 	width: 100%;
 	border-right: 1px solid grey;
+	box-sizing: border-box; /*注意其功能！！*/
 	font-family: monotype;
 	font-size: 1.2em;
 	padding: 5px;
 }
 
 .codeLabel {
-	
+	position: absolute;
+	top: 5px;
+	right: 5px;
 }
+
+#CSSContainer, #JSContainer {
+	display: none;
+}
+
+iframe {
+	height: 100%;
+	position: relative;
+	left: 20px;
+	border: none;
+}
+
+.selected {
+	background-color: grey;
+}
+

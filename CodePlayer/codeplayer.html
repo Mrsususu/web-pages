@@ -18,17 +18,32 @@
 				<button id="runButton">Run</button>
 			</div>
 			<ul id="toggles">
-				<li>HTML</li>
-				<li>CSS</li>
-				<li>JS</li>
-				<li style="border:none">Result</li>
+				<li class="toggles selected">HTML</li>
+				<li class="toggles">CSS</li>
+				<li class="toggles">JS</li>
+				<li class="toggles selected" style="border:none">Result</li>
 			</ul>
 
 		</div>
 
-		<div class="codeContainer" id="htmlContainer">
+		<div class="codeContainer" id="HTMLContainer">
 			<div class="codeLabel">HTML</div>
-			<textarea>example</textarea>
+			<textarea id="htmlCode">example</textarea>
+		</div>
+
+		<div class="codeContainer" id="CSSContainer">
+			<div class="codeLabel">CSS</div>
+			<textarea id="cssCode">example</textarea>
+		</div>
+
+		<div class="codeContainer" id="JSContainer">
+			<div class="codeLabel">JS</div>
+			<textarea id="jsCode">example</textarea>
+		</div>
+
+		<div class="codeContainer" id="ResultContainer">
+			<div class="codeLabel">Result</div>
+			<iframe></iframe>
 		</div>
 
 	</div>
