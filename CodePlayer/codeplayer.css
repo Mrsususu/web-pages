@@ -50,7 +50,7 @@ body {
 	height: 30px; /*上下两个配合使得居中，也可以设置position：relative，然后直接移动定位*/
 	border: 1px solid grey;
 	border-radius: 3px;
-		
+	cursor: pointer;
 } /*一般margin在水平方向比较起作用。此处#toggles盒子的宽度为整个width宽度，因为另外两个元素都是float的*/
 
 #toggles li {
@@ -68,18 +68,31 @@ body {
 
 .codeContainer textarea {
 	height: 100%;
-	width: 100%;
-	border-right: 1px solid grey;
-	box-sizing: border-box; /*注意其功能！！*/
+	width: 100%;	
 	font-family: monotype;
 	font-size: 1.2em;
-	padding: 5px;
+	z-index: 1; /*为了保证html/css/js这几个字显示在textarea上面，而不是被textarea覆盖。*/
 }
+
+.outer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0; 
+	padding: 10px; 
+	border-right: 1px solid grey;
+} /*此方法用于应对div设置高度宽度100%后再加padding导致浏览器窗口撑开的问题*/ /*height:100%;width:100%同时设置padding就会导致异常撑开*/
+/*注意，直接在textarea上做这个操作没有效果，需要外套一个div才能起作用。因为textarea似乎有一些默认大小。*/
 
 .codeLabel {
 	position: absolute;
-	top: 5px;
-	right: 5px;
+	top: 10px;
+	right: 10px;
+	z-index: 2; /*为了保证html/css/js这几个字显示在textarea上面，而不是被textarea覆盖。*/
+	padding: 2px;
+	border: 1px solid grey;
+	border-radius: 3px;
 }
 
 #CSSContainer, #JSContainer {

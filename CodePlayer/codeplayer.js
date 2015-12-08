@@ -1,4 +1,8 @@
 /*用到的新方法：toggleClass(),toggle(),filter(),contents(),val()*/
+/*val() 方法返回或设置被选元素的值。大多用于input，为input中的value的值*/ /*注意比较jquery中html()、text()、val()的区别*/
+/*filter()为在匹配结果集中查找符合第二个选择器的元素*/
+/*contentWindow属性是指指定的frame或者iframe所在的window对象*/
+/*eval()函数可计算某个字符串，并执行其中的的 JavaScript 代码。但是不建议使用，因为安全风险很大（例子：http://www.tuicool.com/articles/BBVnQbq）*/
 
 var windowHeight = $(window).height();
 var menuBarHeight = $("#menuBar").height();
@@ -21,5 +25,5 @@ $(".toggles").click(function (){
 
 $("#runButton").click( function() {
 	$("iframe").contents().find("html").html("<style>"+$("#cssCode").val()+"</style>"+$("#htmlCode").val());
-	eval($("#jsCode").val());
+	document.getElementById("resultFrame").contentWindow.eval($("#jsCode").val());/*contentWindow为属性*/
 });

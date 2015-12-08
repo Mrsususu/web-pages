@@ -28,22 +28,22 @@
 
 		<div class="codeContainer" id="HTMLContainer">
 			<div class="codeLabel">HTML</div>
-			<textarea id="htmlCode">example</textarea>
+			<div class="outer"><textarea id="htmlCode">example</textarea></div> <!--这个outer的div对于盒子的布局很重要，使得格式更加规范有条理-->
 		</div>
 
 		<div class="codeContainer" id="CSSContainer">
 			<div class="codeLabel">CSS</div>
-			<textarea id="cssCode">example</textarea>
+			<div class="outer"><textarea id="cssCode">example</textarea></div>
 		</div>
 
 		<div class="codeContainer" id="JSContainer">
 			<div class="codeLabel">JS</div>
-			<textarea id="jsCode">example</textarea>
+			<div class="outer"><textarea id="jsCode">example</textarea></div>
 		</div>
 
 		<div class="codeContainer" id="ResultContainer">
 			<div class="codeLabel">Result</div>
-			<iframe></iframe>
+			<iframe id="resultFrame"></iframe>
 		</div>
 
 	</div>
