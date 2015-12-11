@@ -173,7 +173,7 @@ a:hover { text-decoration: underline; }
 
 #main {
 	float: left;
-	width: 625px;
+	width: 624px;
 } /*布局。左边栏，长度自己测量的*/
 
 #side {
@@ -185,39 +185,45 @@ a:hover { text-decoration: underline; }
 	margin-top: 10px;
 }
 
-#main .date {
+#main .headline {
+	overflow: hidden;
+}
+#main .headline .date {
 	font-weight: bold;
 }
 
-#main h1 {
+#main .headline h1 {
 	font-size: 2.5em;
 	height: 50px;
 	line-height: 50px;
 }
 
-#main h1 a {
+#main .headline h1 a {
 	color: #1F4F82;
 }
 
-#main img {
+#main .headline img {
 	float: left;
 }
 
-#main .newsitem {
-	float: left;
-	width: 230px;
-	margin-left: 10px;
+#main .headline .newsitem {
+	width: 223px;
 }
 
-#main .newsitem p:first-child {
+.newsitem {
+	float: left;
+	margin-left: 16px;
+}
+
+.newsitem .article {
 	margin-bottom: 10px; 
 }/*注意此处，伪类选择器的使用*/
 
-#main .links {
+.newsitem .links {
 	line-height: 1.5em;
 }
 
-#main .links a {
+#main .newsitem .links a {
 	color: #1F4F82;
 }
 
@@ -230,6 +236,219 @@ a:hover { text-decoration: underline; }
 	background: url(images/sound.png) no-repeat left center;
 	padding-left: 20px;
 }
+
+#main .news {
+	border-top: 1px solid #dddddd;
+	padding-top: 12px;
+	margin-top: 18px;
+	overflow: hidden;
+}
+
+#main .news img {
+	float: left;
+}
+
+.newsitem h2 {
+	font-size: 1.3em;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.newsitem h2 span {
+	font-size: 0.6em;
+	color: #a80000;
+
+}
+
+#main .news h2 a {
+	color:  #1f4f82;
+}
+
+#main .news .newsitem {
+	width: 303px;
+}
+
+.newsitem a span {
+	color: #a80000;
+	font-weight: bold;
+}
+
+#main .newsitem .Profile a {
+	color: #1F4F82;
+	line-height: 20px;
+}
+
+.newsitem .Profile {
+	margin-bottom: 10px;
+}
+
+.newslist {
+	padding-left: 320px; /*左边栏宽度304px，再加上16px间距*/
+	padding-bottom: 10px;
+	border-bottom: 1px solid #dddddd;
+}
+
+#main .other .newsitem {
+	margin-left: 0;
+	padding-right: 16px;
+	width: 304px;
+}
+
+#main .news .newslist a {
+	position: relative;
+	color: #1F4F82;
+	line-height: 23px;
+	font-size: 0.8em;
+}
+
+.newslist i {
+	position: absolute; /*文字中图片可以用这种方法*/
+	display: inline-block;
+	width: 22px;
+	height: 23px;
+	background: url(images/comment.png) no-repeat;
+}
+
+.newslist span {
+	padding-left: 22px;
+	color: #da955c;
+	font-weight: bold;
+}
+
+.channel {
+	overflow: hidden;
+}
+
+.channel h2 {
+	font-size: 1.8em;
+	line-height: 38px;
+	border-bottom: 1px solid #dddddd;
+}
+
+.channel .expandnews {
+	width: 304px;
+	float: left;
+	margin-top: 10px;
+}
+
+.expandnews img {
+	padding-right: 14px;
+	float: left;
+}
+
+.expandnews p {
+	width: 178px;
+	float: left;	
+	font-weight: bold;
+}
+
+#main .channel .expandnews a {
+	color: #1F4F82;
+}
+
+.expandnews h3 {
+	font-size: 1.4em;
+	padding-top: 80px;
+}
+
+.table {
+	height: 194px;
+	background-color: #3C3E51;
+	border: 8px solid #262835;
+	padding: 12px 8px 0 8px;
+	margin-bottom: 18px;
+}
+
+#main .tableitem a {
+	color: #A8C2D4;
+	line-height: 27px;
+}
+
+#main .tableitem h3 a {
+	color: white;
+}
+
+.tableitem i {
+	color: white;
+	padding: 0 3px 0 3px;
+}
+
+.tableitem {
+	float: left;
+	width: 288px;
+}
+.tableitem h3 {
+	line-height: 30px;
+	font-size: 1.3em;
+	margin: 0;
+	border-bottom: 1px solid black;
+}
+
+.tableitem:nth-child(odd) {
+	margin-right: 15px;
+}
+
+.information img {
+	float: left;
+}
+
+.information p {
+	padding-left: 162px;
+}
+
+.information p:nth-child(2) {
+	font-size: 2em;
+	padding-top: 32px;
+} /*p:nth-child(2)代表其父元素的第二个子元素的每个 p 的背景色。注意，这里的父元素是指information的div*/
+
+#main .information p a {
+	color: #1f4f82;	
+	font-weight: bold;
+}
+
+.information p:nth-child(3) {
+	font-size: 1.3em;
+	color: #da955c;
+	line-height: 20px;
+}
+
+.information i {
+	padding: 0 5px 0 5px;
+}
+
+.clearfix:after {
+	content: ".";
+	clear: both;
+	display: block;
+	height: 0;
+	overflow: hidden;
+	visibility: hidden;
+} /*注意此处清除浮动*/
+
+.perTwitter {
+	height: 64px;
+	background-color: #ededed;
+	padding: 10px;
+	font-size: 1.4em;
+}
+
+#main .perTwitter a {
+	color: #1f4f82;	
+	font-weight: bold;
+}
+
+.perTwitter p:nth-child(2) {
+	font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
 
 #side .watchlisten {
 	float: left;
