@@ -1,5 +1,5 @@
 
-body, ul, li, input, form, p, h1, h2 {
+body, ul, li, input, form, p, h1, h2, h3 {
 	padding: 0;
 	margin: 0;
 	font-family: verdana,helvetica,arial,sans-serif;/*来自原网页的body中font-family的值，也就是f12观察*/
@@ -23,6 +23,10 @@ a:hover { text-decoration: underline; }
 	overflow: hidden;
 	position: relative; /*目标是让.searchdiv进行定位*/
 }/*此为固定居中布局*/ /*注意其里面都是浮动元素，所以需要撑开，不然没有设置高度的话，其一直高度为0*/
+
+#content .fixedwidth {
+	border-bottom: 1px solid #4c4c4c;
+}
 
 #logodiv {
 	padding-top: 5px;
@@ -168,7 +172,7 @@ a:hover { text-decoration: underline; }
 }
 
 #content a {
-	color: #535353;
+	color: #1f4f82;
 }
 
 #main {
@@ -198,10 +202,6 @@ a:hover { text-decoration: underline; }
 	line-height: 50px;
 }
 
-#main .headline h1 a {
-	color: #1F4F82;
-}
-
 #main .headline img {
 	float: left;
 }
@@ -221,10 +221,6 @@ a:hover { text-decoration: underline; }
 
 .newsitem .links {
 	line-height: 1.5em;
-}
-
-#main .newsitem .links a {
-	color: #1F4F82;
 }
 
 .newsitem .video {
@@ -260,10 +256,6 @@ a:hover { text-decoration: underline; }
 
 }
 
-#main .news h2 a {
-	color:  #1f4f82;
-}
-
 #main .news .newsitem {
 	width: 303px;
 }
@@ -274,7 +266,6 @@ a:hover { text-decoration: underline; }
 }
 
 #main .newsitem .Profile a {
-	color: #1F4F82;
 	line-height: 20px;
 }
 
@@ -296,7 +287,6 @@ a:hover { text-decoration: underline; }
 
 #main .news .newslist a {
 	position: relative;
-	color: #1F4F82;
 	line-height: 23px;
 	font-size: 0.8em;
 }
@@ -317,6 +307,7 @@ a:hover { text-decoration: underline; }
 
 .channel {
 	overflow: hidden;
+	margin-bottom: 20px;
 }
 
 .channel h2 {
@@ -340,10 +331,6 @@ a:hover { text-decoration: underline; }
 	width: 178px;
 	float: left;	
 	font-weight: bold;
-}
-
-#main .channel .expandnews a {
-	color: #1F4F82;
 }
 
 .expandnews h3 {
@@ -380,7 +367,6 @@ a:hover { text-decoration: underline; }
 .tableitem h3 {
 	line-height: 30px;
 	font-size: 1.3em;
-	margin: 0;
 	border-bottom: 1px solid black;
 }
 
@@ -400,9 +386,9 @@ a:hover { text-decoration: underline; }
 	font-size: 2em;
 	padding-top: 32px;
 } /*p:nth-child(2)代表其父元素的第二个子元素的每个 p 的背景色。注意，这里的父元素是指information的div*/
+/*p:nth-child(2) 也就是必须满足两个条件，1为父元素的第二个子元素，2本元素为p。（即有了两个选择条件限制）*/
 
 #main .information p a {
-	color: #1f4f82;	
 	font-weight: bold;
 }
 
@@ -433,7 +419,6 @@ a:hover { text-decoration: underline; }
 }
 
 #main .perTwitter a {
-	color: #1f4f82;	
 	font-weight: bold;
 }
 
@@ -441,11 +426,228 @@ a:hover { text-decoration: underline; }
 	font-weight: bold;
 }
 
+.channel img {
+	float: left;
+}
 
+.channel .special {
+	margin-left: 305px;
+}
 
+.channel .main {
+	background-color: #D1700E;
+	padding: 10px;	
+	color: white;	
+	height: 85px;
+}
 
+.channel .main h3 {
+	font-size: 1.3em;
+	line-height: 25px;
+}
 
+#main .channel .main a {
+	color: white;
+}
 
+.channel .more {
+	padding: 10px;
+	background-color: #EDEDED;
+	height: 46px;
+	line-height: 25px;
+	font-weight: bold;
+}
+
+.channel .uknews {
+	width: 144px;
+	float: left;
+	margin-right: 16px;
+}
+
+#main .channel .uknews a {
+	font-weight: bold;
+}
+
+#main .channel .uknews h3 a {
+	font-size: 1.3em;
+}
+
+.channel .uknews h3 {
+	font-size: 1.3em;
+	line-height: 36px;
+	border-bottom: 1px solid #dddddd;
+}
+
+.channel .uknews img {
+	margin: 10px auto;
+}
+
+.uknews a {
+	display: inline-block;
+}
+
+.uknews>a, .uknews>p {
+	padding-bottom: 5px;
+}
+
+.travel {
+	border-bottom: 1px solid #dddddd;
+	padding-bottom: 16px;
+	margin-bottom: 0;
+}
+
+.travel h2 {
+	border-bottom: none;
+}
+
+.travel .travelnews {
+	float: left;
+	position: relative;
+}
+
+.travel .travelnews:nth-child(2) {
+	margin-right: 16px;
+}
+
+.travelnews .bg, .travelnews h3, .travelnews p {
+	position: absolute;	
+}
+
+.travelnews .bg {
+	background-color: rgba(0,0,0,0.7);
+	height: 50px;
+	width: 304px;
+	bottom: 0;
+	z-index: 2;
+}
+
+.travelnews h3 {
+	bottom: 24px;
+	left: 10px;
+	z-index: 3;
+}
+
+#content .travelnews a {
+	color: white;
+	font-size: 1.1em;
+}
+
+.travelnews p {
+	bottom: 8px;
+	left: 10px;
+	color: white;
+	z-index: 3;
+}
+
+.live {
+	margin-bottom: 0;
+	border-bottom: 1px solid #dddddd;
+}
+
+.live img {
+	float: left;
+	padding: 10px 0 10px 0;
+}
+
+.live h3, .live p {
+	padding-left: 162px;
+}
+
+.live h3 {
+	padding-top: 10px;
+	font-size: 1.3em;
+}
+
+.search {
+	padding-bottom: 30px;
+}
+
+.search h2 {
+	line-height: 50px;
+}
+
+.search form {
+	width: 622px;
+	height: 24px;
+	background: url(images/search.png) no-repeat top right;
+	border: 1px solid #dddddd;
+	position: relative;
+}
+
+.search .text {
+	width: 594px; 
+	height: 24px;
+	border: none; 
+	outline: none; 
+	border-right: 1px solid #dddddd;  
+} 
+
+/*submit框一旦没有value，其宽度就为0，因而需要重新设定宽度*/ /*其内容为一个搜索的图片，该图片大小正好为btn的大小30*25*/
+.search .btn {
+	width: 27px;
+	height: 24px;
+	border: none; 
+	background: none;
+	position: absolute; /*相对于外围的searchdiv框定位*/
+	right: 0;
+	top: 0;
+}
+
+.service {
+	overflow: hidden;
+	padding-bottom: 20px;
+}
+
+.service h2 {
+	font-size: 2em;
+}
+
+.service ul, .service li {
+	float: left;
+}
+
+.service li {
+	padding-top: 48px;
+	width: 124px;
+	position: relative;
+} /*用于定盒子位置，字体位置*/
+
+.service span {
+	width: 32px;
+	height: 34px;
+	position: absolute;	
+	top: 12px;
+	overflow: hidden;
+    text-indent: -5000px; /*缩进隐藏文字*/
+} /*用于定图片位置，相对于li盒子*/ /*其大小为图片大小*/
+
+.service .ser-pic1 {
+	background: url(images/serpic1.png) no-repeat top right;
+}
+
+.service .ser-pic2 {
+	background: url(images/serpic2.png) no-repeat top right;
+}
+
+.service .ser-pic3 {
+	background: url(images/serpic3.png) no-repeat top right;
+}
+
+.service .ser-pic4 {
+	background: url(images/serpic4.png) no-repeat top right;
+}
+
+.service .ser-pic5 {
+	background: url(images/serpic5.png) no-repeat top right;
+}
+
+.ee {
+	border: 1px solid red;text-indent: 50px;
+}
+
+.ee a {
+	
+}
 
 
 
@@ -519,3 +721,32 @@ a:hover { text-decoration: underline; }
 	border-bottom: none;
 } /*live列表最底下的下边线需取消*/
 
+#footer .fixedwidth a {
+	color: #4c4c4c;
+}
+
+#footer #main, #footer #side {
+	position: relative;
+	font-size: 0.8em;
+}
+
+#footer #main span {
+	position: absolute;
+	top: 15px;
+	right: 90px;
+}
+
+#footer #main img {
+	padding-top: 16px;
+}
+
+#footer #main p {
+	width: 310px;
+}
+
+.leftpart, .rightpart {
+	height: 106px;
+	width: 156px;
+	float: left;
+	padding-top: 10px; 
+}
