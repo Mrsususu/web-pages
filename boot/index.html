@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>bootstrap</title>
+
+	<!--Bootstrap-->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<div class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand">Logo</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
+				>
+					<span class="sr-only">Toggle navigation</span> <!--屏幕阅读器-->
+					<span class="icon-bar"></span> <!--button上的横线-->
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+
+				</button>
+
+				
+
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">page1</a></li>
+					<li><a href="#">page2</a></li>
+					<li><a href="#">page3</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="container"> <!--只有在container内的元素才有响应式效果-->	
+		<h1>Hello World!</h1>
+
+		<!--Form Part-->
+
+		<form> <!--设置form的class为form-inline，则在web页面中下面各项会显示在一排，而在mobile页面中仍旧显示在一列-->
+			<div class="form-group"> <!--input框-->
+				<label for="username">Username:</label>
+				<input type="text" class="form-control" name="username"> <!--注意name和label中的for要对应，便于屏幕阅读器阅读-->
+			</div>
+
+			<div class="form-group">  <!--input框-->
+				<label for="password">Password:</label>
+				<input type="password" class="form-control" name="password"> <!--注意此处type的改变，变为password后，其输入就自动会变为隐藏字符-->
+				<!--此处如果为email，则submit提交后框内没有@等邮箱符号，则会出现异常的提示；此处如果为date，则可以自动显示日期选择框-->
+			</div>
+
+			<div class="checkbox">  <!--checkbox框-->
+				<label> <!--注意此处，即在checkbox中，input在label内-->
+					<input type="checkbox">keep me logged in 
+				</label> 
+			</div>
+
+			<div class="form-group">  <!--submit按键-->
+				 <input type="submit" value="Loge In" class="btn btn-default" name="password"><!--可以发现类型改变主要看type和class两个值的变化-->
+			</div>
+		</form>
+
+		<!--Table Part-->
+		<table class="table table-striped table-bordered"> <!--这三个样式都是可选择的-->
+			<tr><th>Name</th><th>Age</th></tr>
+			<tr class="success"><td>Alice</td><td>18</td></tr>
+			<tr><td>Tom</td><td>17</td></tr>
+			<tr><td class="danger">Jimmy</td><td>16</td></tr>
+		</table>
+
+		<!--Components Part-->
+		<span class="glyphicon glyphicon-search"></span> <!--可以再添加新的class名称，然后对其使用css，比如改变大小位置颜色等等-->
+		<div class="input-group">
+			<span class="glyphicon glyphicon-comment"></span>
+			<span class="glyphicon glyphicon-comment input-group-addon"></span> <!--把它放在下面这个input后面，则可以使得标记在input的后面出现--> <!--同时，注意input-group-addon的重要性-->
+			<input type="text" class="form-control">
+		</div>
+
+		<button type="button" class="btn btn-success">
+			<span class="glyphicon glyphicon-calendar"> Calendar</span>
+		</button>
+
+		<div class="alert alert-danger alert-dismissable"> <!--改为 alert-success也是类似，背景此时就变为绿色-->
+			You've done it!
+		</div>
+
+
+	</div>
+
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	
+</body>
+</html>

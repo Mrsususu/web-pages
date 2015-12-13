@@ -259,9 +259,7 @@
 							<li><a href="#"><span class="ser-pic5">&nbsp</span>E-mail news</a></li>
 						</ul>
 					</div>
-					<div class="ee">
-						<a href="#">123</a>
-					</div>
+
 
 				</div>
 
@@ -372,7 +370,7 @@
 	overflow:hidden;和overflow:auto; 都可以起到清除浮动的效果，用在父元素，可以使得内部的浮动子元素撑开父元素容器
 -->
 
-<!-- tip5: text-indent无效情况（用于<a href="#">文字<span>图标名称</span></a>中，span设置absolute进行定位，然后span设置背景图片，同时使其位置在文字前，这时候就需要文字设置text-indent）
+<!-- tip5: text-indent无效情况（用于<a href="#">文字<span>图标名称</span></a>中，span设置absolute进行定位，然后span设置背景图片，同时使其位置在文字前，这时候就需要文字设置text-indent） (图片文字共存，让图片在文字前面，比如li里面包a，此时需要li设置text-indent使得a后移腾出空间给图片。当然，此时图片定位需要设置span为absolute，然后li为relative，然后span相对于li定位)
    1、.text-indent所在的元素是行内元素而非块级元素。比如用在span,a等行内元素上;
 
    解决方案：
@@ -382,4 +380,30 @@
 <!-- tip6: margin负值的使用
 	如果盒子padding-left:400px;contnet的width为100px;
 	如果想要让盒子里面的h1不止在content的部分，那就需要设置margin-left为-400px，就可以使得盒子内部的h1不受影响
+-->
+
+
+<!-- tip7:两个图片和文字共存的例子，tip2、tip3和tip5。 
+	情况一：大图片，则a里面包img(最外边h1包a)(注意，如果是标题上带有链接，都是在h1内部包a)
+	情况二：小图标，则a里面包span(最外边li或者div包a)(此例子中一般span需要定位)
+
+-->
+
+<!-- tip8:bbc页面中Also in the News板块值得学习
+	就是不使用浮动，而使用负margin来起作用。ul的content为第二个元素的位置，然后第一个元素使用负margin定位到对应位置。
+	优点：浮动的话需要设置高度，如果用负margin的话就可以不设置高度，这样高度就可以自适应
+
+-->
+
+<!-- tip9:多列表格的制作，可以参考bbc模板中深色table部分
+	让左列浮动float：left，且清除其右边浮动clear：lfet
+
+
+-->
+
+<!-- tip10:注意clear的作用，尤其是clear:left和clear:right
+	让左列浮动float：left，且清除其左边浮动clear：left（即其左侧不能有浮动元素）。这在列表中能起作用。
+同时需要【注意】：执行顺序的问题！！（例子：两个元素都是float：left，clear：right，第一个元素执行时第二个元素还没有加载，因而第一个元素的clear：right还先不会起作用。只有第二个元素的clear：right会起作用，所以第二个元素降到了第二行）
+    以上代码尽管第二个div有clear:right代码，但是它的右侧还是出现了浮动元素。这主要代码是顺序执行的，当执行到第二个div要清除右浮动的时候，第三个div并没有被加载，所以它的清除效果也就无效了，于是第三个div依然会紧跟着第二个div。
+
 -->

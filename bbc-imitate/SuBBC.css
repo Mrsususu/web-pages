@@ -642,12 +642,11 @@ a:hover { text-decoration: underline; }
 }
 
 .ee {
-	border: 1px solid red;text-indent: 50px;
+	border: 1px solid red;text-indent: 50px;   
+	text-indent: 21px;
 }
 
-.ee a {
-	
-}
+
 
 
 
