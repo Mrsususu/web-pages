@@ -7,10 +7,42 @@
 	<!--Bootstrap-->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
-</head>
-<body>
+	<style>
+		 .box {
+		 border:1px solid grey;
+		 background-color:#d3d3d3;
 
-	<div class="navbar navbar-default">
+		 }
+
+		 .large {
+		 font-size:3000%;
+		 color:red;
+		 }
+
+		 #div1 {
+		 background-color:blue;
+
+		 }
+
+		 #div2 {
+		 background-color:red;
+
+		 }
+
+		 #div3 {
+		 background-color:green;
+
+		 }
+
+		 .contentDiv {
+		 height:800px;
+		 }
+	 </style>
+
+</head>
+<body data-spy="scroll" data-target=".navbar-collapse"> <!--期功能为点击nav中对应栏时，会跳到对应位置，且nav中该栏部分会变色-->
+
+	<div class="navbar navbar-default navbar-fixed-top"> <!--可以添加class为navbar-fixed-top从而使得nav栏固定于顶端-->
 		<div class="container">
 			<div class="navbar-header">
 				<a href="#" class="navbar-brand">Logo</a>
@@ -20,18 +52,14 @@
 					<span class="icon-bar"></span> <!--button上的横线-->
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
-
-				</button>
-
-				
+				</button>				
 
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">page1</a></li>
-					<li><a href="#">page2</a></li>
-					<li><a href="#">page3</a></li>
+					<li class="active"><a href="#div1">Home</a></li>
+					<li><a href="#div2">page1</a></li>
+					<li><a href="#div3">page2</a></li>
 				</ul>
 			</div>
 		</div>
@@ -63,7 +91,7 @@
 			</div>
 
 			<div class="form-group">  <!--submit按键-->
-				 <input type="submit" value="Loge In" class="btn btn-default" name="password"><!--可以发现类型改变主要看type和class两个值的变化-->
+				 <input type="submit" value="Loge In" class="btn btn-default"><!--可以发现类型改变主要看type和class两个值的变化-->
 			</div>
 		</form>
 
@@ -88,9 +116,57 @@
 		</button>
 
 		<div class="alert alert-danger alert-dismissable"> <!--改为 alert-success也是类似，背景此时就变为绿色-->
+			<button type="button" class="close" data-dismiss="alert">x</button> <!--注意datamissed部分-->
 			You've done it!
 		</div>
 
+		<ul class="list-group">
+			<li class="list-group-item">Email<span class="badge">12</span></li>
+			<li class="list-group-item">Send<span class="badge">4</span></li>
+			<li class="list-group-item">item3</li>
+			<li class="list-group-item">item4</li>
+		</ul>	
+
+		<div class="dropdown">  <!--下拉框的实现-->
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    Dropdown
+		    <span class="caret"></span>
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+		    <li><a href="#">Action</a></li>
+		    <li><a href="#">Another action</a></li>
+		    <li><a href="#">Something else here</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li><a href="#">Separated link</a></li>
+		  </ul>
+		</div>
+
+		<!--javascript-->
+		<button class="btn btn-success" data-toggle="modal" data-target="#myModal">Launch Modal</button>
+
+		<div class="modal" id="myModal">]
+			<div class="modal-dialog modal-sm" > <!--添加class为modal-sm能使得弹窗变小-->
+				<div class="modal-content">
+					<div class="modal-header"> <!--通过header和body和footer来进行横线划分，区分各个区域-->
+						<button class="close" data-dismiss="modal">x</button>
+						<h4 class="modal-title">My Modal!</h4>
+					</div>
+					<div class="modal-body">
+						What a fantastic modal this is!
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-default" data-dismiss="modal">Close</button>
+						<button class="btn btn-success">Save Changes</button>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+		<div id="div1" class="contentDiv">Content</div>
+		<div id="div2" class="contentDiv">Content</div>
+		<div id="div3" class="contentDiv">Content</div>
 
 	</div>
 
