@@ -1,0 +1,41 @@
+
+
+/* 重置 */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;} 
+strong,em{font-style:normal;font-weight:bold;}
+body,textarea,input,button,select,keygen,legend{font:12px/1.14  "Arial","Hiragino Sans GB","Microsoft YaHei", \5fae\8f6f\96c5\9ed1, "Helvetica", "sans-serif";color:#333;outline:0;}
+li{list-style:none;}
+a{text-decoration:none;}
+a,a:hover{color:#333;}
+/* 默认 */
+/* 统一调用背景图 */
+/* 统一清除浮动 */
+/*.g-bdc:after,.m-dimg ul:after,.u-tab:after{display:block;visibility:hidden;clear:both;height:0;overflow:hidden;content:'.';}
+.g-bdc,.m-dimg ul,.u-tab{zoom:1;}*/
+/* 布局 */
+/*.g-sd{float:left;width:300px;}*/
+/* 模块 */
+/*.m-logo{width:200px;height:50px;}*/
+/* 元件 */
+/*.u-btn{height:20px;border:1px solid #333;}*/
+/* 功能 */
+/*.f-tac{text-align:center;}*/
+/* 皮肤 */
+/*.s-fc,a.s-fc:hover{color:#fff;}*/
+
+.f-csp{cursor:pointer;}
+
+
+/* 头部 */
+.g-hd{background-color:#f3f3f3}
+.g-hd .m-topnav{height:36px;width:100%;}
+.g-hd .wrap{width:1205px;margin:0 auto;}
+.g-hd p{line-height:12px;margin:12px 0;}
+.g-hd p:first-child{float:left;}
+.g-hd p:last-child{float:right;background:url(../images/sprite.png) no-repeat;text-indent:15px;} /*特别注意，图标采用sprite。然后background中定位的意义，是移动sprite然后让其某部分在已有固定的填充背景的content框中显示*/
+.g-hd a{color:#21a557};
+/* 主体 */
+
+
+
+/* 脚部 */
