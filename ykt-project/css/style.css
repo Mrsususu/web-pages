@@ -24,7 +24,8 @@ a,a:hover{color:#333;}
 /*.s-fc,a.s-fc:hover{color:#fff;}*/
 
 .f-csp{cursor:pointer;}
-
+.f-fl{float:left;}
+.f-fr{float:right;}
 
 /* 头部 */
 .g-hd{background-color:#f3f3f3}
