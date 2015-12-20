@@ -23,19 +23,80 @@ a,a:hover{color:#333;}
 /* 皮肤 */
 /*.s-fc,a.s-fc:hover{color:#fff;}*/
 
+.f-cb:after{content:'.';display:block;clear:both;height:0;overflow:hidden;visibility:hidden;}
+.f-ib{display:inline-block;*display:inline;*zoom:1;}
+.f-dn{display:none;}
+.f-db{display:block;}
 .f-csp{cursor:pointer;}
 .f-fl{float:left;}
 .f-fr{float:right;}
+.f-pr{position:relative;}
+.f-pa{position:absolute;}
+.f-fwn{font-weight:normal;}
+.f-fwb{font-weight:bold;}
+.f-oh{overflow:hidden;}
+
+/* 响应式 */
+@media screen and (min-width:1205px){
+	.g-hd .m-topnav .wrap,.g-hd .m-botnav{width:1205px;}
+	.g-bd .m-slide a{width:1616px;margin:0 auto;}
+	.g-bd .m-slide img{margin:0 -18px;} /* 图片原长1652px,a宽度1616px.(1652-16160/2 */
+	.g-bd .m-prodect{width:1207px;margin:0 auto;}
+	.g-bd .m-prodect span{width:80px;height:230px;margin:66px 18px 0 25px;}
+	.g-bd .m-prodect li{width:370px;margin-right:30px;} 
+	}
+
+@media screen and (max-width:1205px){
+	.g-hd .m-topnav .wrap,.g-hd .m-botnav{width:960px;}
+	.g-bd .m-slide a{width:1364px;margin:0 auto;}
+	.g-bd .m-slide img{margin:0 -144px;}
+	.g-bd .m-prodect{width:960px;margin:0 auto;}
+	.g-bd .m-prodect span{width:80px;height:230px;margin:66px 20px 0 0;}
+	.g-bd .m-prodect li{width:280px;margin:0 20px;}  
+	}
 
 /* 头部 */
-.g-hd{background-color:#f3f3f3}
-.g-hd .m-topnav{height:36px;width:100%;}
-.g-hd .wrap{width:1205px;margin:0 auto;}
-.g-hd p{line-height:12px;margin:12px 0;}
-.g-hd p:first-child{float:left;}
-.g-hd p:last-child{float:right;background:url(../images/sprite.png) no-repeat;text-indent:15px;} /*特别注意，图标采用sprite。然后background中定位的意义，是移动sprite然后让其某部分在已有固定的填充背景的content框中显示*/
-.g-hd a{color:#21a557};
+.g-hd{color:#333;}
+.g-hd .m-topnav{height:36px;width:100%;background-color:#f3f3f3}
+.g-hd .m-topnav .wrap{margin:0 auto;}
+.g-hd .m-topnav p{line-height:12px;margin:12px 0;}
+.g-hd .m-topnav p:first-child{float:left;}
+.g-hd .m-topnav p:last-child{float:right;background:url(../images/sprite.png) no-repeat;text-indent:15px;} /*特别注意，图标采用sprite。然后background中定位的意义，是移动sprite然后让其某部分在已有固定的填充背景的content框中显示*/
+.g-hd .m-topnav a{color:#21a557;}
+
+.g-hd .m-botnav{height:22px;margin:0 auto;padding:30px 0 37px 0;}
+.g-hd .m-logo{padding-right:31px;}
+.g-hd .m-logo h2{font-size:22px;}
+.g-hd .m-logo h2 span{margin-right:13px;top:3px;width:71px;color:#39a030;font-size:28px;background:url(../images/sprite.png) no-repeat right 6px;}
+
+.g-hd .m-login{top:8px;color:#666;}
+.g-hd .m-login .attention{width:54px;height:21px;padding-left:22px;border:none;border-radius:2px;background:#21a557 url(../images/sprite.png) -18px 0;color:#fff;font-size:12px;line-height:21px;}
+.g-hd .m-login .attention:hover{background-color:#2fb556;cursor:pointer;}
+.g-hd .m-login .cancel{top:5px;padding:0 5px 0 5px;border-left:1px solid #666;}
+.g-hd .m-login .cancel:hover{color:#21a557;text-decoration:underline;}
+.g-hd .m-login span{margin-left:14px;}
+
+.g-hd .m-nav{padding-right:62px;}
+.g-hd .m-nav a{margin-left:54px;font-size:16px;color:#333;}
+.g-hd .m-nav a:hover{color:#21a557;}
+.g-hd .m-nav .search{width:18px;height:18px;background:url(../images/sprite.png) no-repeat left -15px;}
+.g-hd .m-nav .search:hover{background:url(../images/sprite.png) no-repeat left -33px;}
+
 /* 主体 */
+.g-bd{width:100%;background-color:#f8f8f8;}
+.g-bd .g-top{background-color:#ffffff;}
+.g-bd .g-top .m-slide{margin:0 auto;}
+.g-bd .m-slide ul{left:778px;bottom:20px;} /* !!此处，left需要用js来写入，以保证自适应 */
+.g-bd .m-slide li{float:left;width:10px;height:10px;border-radius:50%;margin:5px;background-color:#fff;text-indent:-1000px;}
+.g-bd .m-slide .active{background-color:#333;}
+
+.g-bd .m-prodect .icon1{background:url(../images/sprite.png) no-repeat 0 -85px;}
+.g-bd .m-prodect .icon2{background:url(../images/sprite.png) no-repeat -80px -85px;}
+.g-bd .m-prodect .icon3{background:url(../images/sprite.png) no-repeat -160px -85px;}
+.g-bd .m-prodect .item h3{padding-top:46px;color:#333;font-size:22px;line-height:52px;} /* 内容会在前面浮动元素的margin外面 */
+.g-bd .m-prodect .item p{height:120px;color:#666;font-size:14px;line-height:24px;}
+.g-bd .m-prodect .item a{ font-size:14px; color:#39a030;}
+.g-bd .m-prodect .item a:hover{ text-decoration:underline;}
 
 
 
