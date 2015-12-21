@@ -1,9 +1,10 @@
 
 
 /* 重置 */
-html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;} 
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu,a{margin:0;padding:0;} 
 strong,em{font-style:normal;font-weight:bold;}
 body,textarea,input,button,select,keygen,legend{font:12px/1.14  "Arial","Hiragino Sans GB","Microsoft YaHei", \5fae\8f6f\96c5\9ed1, "Helvetica", "sans-serif";color:#333;outline:0;}
+html,body,fieldset,img,iframe,abbr{border:0;}
 li{list-style:none;}
 a{text-decoration:none;}
 a,a:hover{color:#333;}
@@ -37,22 +38,32 @@ a,a:hover{color:#333;}
 .f-oh{overflow:hidden;}
 
 /* 响应式 */
+/* 宽屏 */  /* 注意两个example采用的两层嵌套方法part1和part2 */
 @media screen and (min-width:1205px){
 	.g-hd .m-topnav .wrap,.g-hd .m-botnav{width:1205px;}
-	.g-bd .m-slide a{width:1616px;margin:0 auto;}
-	.g-bd .m-slide img{margin:0 -18px;} /* 图片原长1652px,a宽度1616px.(1652-16160/2 */
-	.g-bd .m-prodect{width:1207px;margin:0 auto;}
+	.g-bd .m-slide a{width:1616px;margin:0 auto;} /* example1 part1 */
+	.g-bd .m-slide img{margin:0 -18px;} /* 图片原长1652px,a宽度1616px.(1616-1652)/2=118px */  /* example1 part2 */
+	.g-bd .m-prodect{width:1207px;margin:0 auto;} /* 就是ul包围部分的大小 */
 	.g-bd .m-prodect span{width:80px;height:230px;margin:66px 18px 0 25px;}
 	.g-bd .m-prodect li{width:370px;margin-right:30px;} 
+	.g-bd .m-workplace .box{width:1616px;margin:0 auto;} /* 必须添加width，不然margin不起作用。因为width大小会默认和父元素一样大，因为box里面是float元素，不会撑大box盒子。 */
+	.g-bd .g-bot{width:1205px;}
+	.g-bd .g-content{width:952px;}
+	.g-bd .g-content .design{width:972px;}
 	}
-
+/* 窄屏 */
 @media screen and (max-width:1205px){
 	.g-hd .m-topnav .wrap,.g-hd .m-botnav{width:960px;}
 	.g-bd .m-slide a{width:1364px;margin:0 auto;}
 	.g-bd .m-slide img{margin:0 -144px;}
 	.g-bd .m-prodect{width:960px;margin:0 auto;}
 	.g-bd .m-prodect span{width:80px;height:230px;margin:66px 20px 0 0;}
-	.g-bd .m-prodect li{width:280px;margin:0 20px;}  
+	.g-bd .m-prodect li{width:285px;margin:0 15px;} 
+	.g-bd .m-workplace{width:1364px;} /* 视觉稿里的宽度，两边需要overflow:hidden */ /* example2 part1 */
+	.g-bd .m-workplace .box{width:1616px;margin:0 -126px;} /* 实际会有宽度320*5+4*4=1616.然后左移一部分使其居中(1364-1616)/2=-126px */ /* example2 part2 */
+	.g-bd .g-bot{width:960px;}
+	.g-bd .g-content{width:709px;}
+	.g-bd .g-content .design{width:729px;}
 	}
 
 /* 头部 */
@@ -60,14 +71,13 @@ a,a:hover{color:#333;}
 .g-hd .m-topnav{height:36px;width:100%;background-color:#f3f3f3}
 .g-hd .m-topnav .wrap{margin:0 auto;}
 .g-hd .m-topnav p{line-height:12px;margin:12px 0;}
-.g-hd .m-topnav p:first-child{float:left;}
-.g-hd .m-topnav p:last-child{float:right;background:url(../images/sprite.png) no-repeat;text-indent:15px;} /*特别注意，图标采用sprite。然后background中定位的意义，是移动sprite然后让其某部分在已有固定的填充背景的content框中显示*/
+.g-hd .m-topnav p:last-child{background:url(../images/sprite.png) no-repeat;text-indent:15px;} /*特别注意，图标采用sprite。然后background中定位的意义，是移动sprite然后让其某部分在已有固定的填充背景的content框中显示*/
 .g-hd .m-topnav a{color:#21a557;}
 
 .g-hd .m-botnav{height:22px;margin:0 auto;padding:30px 0 37px 0;}
 .g-hd .m-logo{padding-right:31px;}
 .g-hd .m-logo h2{font-size:22px;}
-.g-hd .m-logo h2 span{margin-right:13px;top:3px;width:71px;color:#39a030;font-size:28px;background:url(../images/sprite.png) no-repeat right 6px;}
+.g-hd .m-logo h2 span{margin-right:13px;padding-right:13px;top:3px;width:71px;color:#39a030;font-size:28px;background:url(../images/sprite.png) no-repeat right 6px;}
 
 .g-hd .m-login{top:8px;color:#666;}
 .g-hd .m-login .attention{width:54px;height:21px;padding-left:22px;border:none;border-radius:2px;background:#21a557 url(../images/sprite.png) -18px 0;color:#fff;font-size:12px;line-height:21px;}
@@ -76,7 +86,7 @@ a,a:hover{color:#333;}
 .g-hd .m-login .cancel:hover{color:#21a557;text-decoration:underline;}
 .g-hd .m-login span{margin-left:14px;}
 
-.g-hd .m-nav{padding-right:62px;}
+.g-hd .m-nav{padding-right:12px;}
 .g-hd .m-nav a{margin-left:54px;font-size:16px;color:#333;}
 .g-hd .m-nav a:hover{color:#21a557;}
 .g-hd .m-nav .search{width:18px;height:18px;background:url(../images/sprite.png) no-repeat left -15px;}
@@ -98,6 +108,18 @@ a,a:hover{color:#333;}
 .g-bd .m-prodect .item a{ font-size:14px; color:#39a030;}
 .g-bd .m-prodect .item a:hover{ text-decoration:underline;}
 
+.g-bd .m-workplace{height:224px;background-color:#f8f8f8;}
+.g-bd .m-workplace .box{height:224px;}
+.g-bd .m-workplace img{float:left; margin-right:4px;}
+.g-bd .m-workplace .last{margin-right:0;}
+
+.g-bd .g-bot{margin:0 auto;padding-top:80px;}
+.g-bd .g-tabhd{width:400px;margin-bottom:30px;box-shadow:1px 1px 1px #dcdcdc;}
+.g-bd .g-tabhd a{width:200px;height:50px;font-size:20px;line-height:50px;text-align:center;background-color:#fff;color:#666;}
+.g-bd .g-tabhd .active{background-color:#39a030;color:#fff;}
+
+.g-bd .g-content .design{height:1230px;}
+.g-bd .g-content .m-item{float:left;width:223px;height:226px;margin:0 20px 20px 0;box-shadow:0 1px 1px 1px #e6e6e6;background-color:#fff;}
 
 
 /* 脚部 */
