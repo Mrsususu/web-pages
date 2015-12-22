@@ -1,5 +1,4 @@
 
-
 /* 重置 */
 html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu,a{margin:0;padding:0;} 
 strong,em{font-style:normal;font-weight:bold;}
@@ -48,8 +47,9 @@ a,a:hover{color:#333;}
 	.g-bd .m-prodect li{width:370px;margin-right:30px;} 
 	.g-bd .m-workplace .box{width:1616px;margin:0 auto;} /* 必须添加width，不然margin不起作用。因为width大小会默认和父元素一样大，因为box里面是float元素，不会撑大box盒子。 */
 	.g-bd .g-bot{width:1205px;}
-	.g-bd .g-content{width:952px;}
-	.g-bd .g-content .design{width:972px;}
+	.g-bd .g-content{width:960px;} /* width为225 margin-right为20 (225+20)*4-20=960 */ 
+	.g-bd .g-content .design{width:980px;} /* width为225 margin-right为20 (225+20)*4=980 */
+	.g-ft .m-ft{width:1205px;}
 	}
 /* 窄屏 */
 @media screen and (max-width:1205px){
@@ -62,8 +62,9 @@ a,a:hover{color:#333;}
 	.g-bd .m-workplace{width:1364px;} /* 视觉稿里的宽度，两边需要overflow:hidden */ /* example2 part1 */
 	.g-bd .m-workplace .box{width:1616px;margin:0 -126px;} /* 实际会有宽度320*5+4*4=1616.然后左移一部分使其居中(1364-1616)/2=-126px */ /* example2 part2 */
 	.g-bd .g-bot{width:960px;}
-	.g-bd .g-content{width:709px;}
-	.g-bd .g-content .design{width:729px;}
+	.g-bd .g-content{width:715px;} /* m-item的width为225 margin-right为20【其box-shadow可以不考虑】 (225+20)*3-20=715 */ /* 其实实际图片宽度 */
+	.g-bd .g-content .design{width:735px;}
+	.g-ft .m-ft{width:960px;}
 	}
 
 /* 头部 */
@@ -86,11 +87,22 @@ a,a:hover{color:#333;}
 .g-hd .m-login .cancel:hover{color:#21a557;text-decoration:underline;}
 .g-hd .m-login span{margin-left:14px;}
 
+.g-hd .m-login .popuplog{position:fixed;top:0;left:0;z-index:999;width:100%;height:100%;}
+.g-hd .m-login .popuplog .bg{width:100%;height:100%;background-color:rgba(0,0,0,0.8);}
+.g-hd .m-login .popuplog .popup{position:fixed;top:50%;left:50%;width:388px;height:288px;margin:-144px 0 0 -194px;background-color:#fff;}
+.g-hd .m-login .popuplog p{margin:30px 0 20px 40px;font-size:17px;color:#444;}
+.g-hd .m-login .popuplog .close{top:10px;right:10px;width:9px;height:9px;background:url(../images/sprite.png) no-repeat 0 0;}
+.g-hd .m-login .popuplog form{margin:0 40px;}
+.g-hd .m-login .popuplog input{border:none;outline:none;}
+.g-hd .m-login .popuplog .text{width:290px;height:40px;margin-bottom:30px;text-indent:10px;font-size:14px;border-top: 1px solid #dfdfdf;border-left: 1px solid #dfdfdf;box-shadow:inset 1px 1px 2px 1px #f1f1f1;background-color:#fafafa;color:#000;} /* 注意text-indent的作用 */
+.g-hd .m-login .popuplog .submit{width:293px;height:46px;color:#fff;background:url(../images/sprite.png) no-repeat 0 -165px;cursor:pointer;}
+
 .g-hd .m-nav{padding-right:12px;}
 .g-hd .m-nav a{margin-left:54px;font-size:16px;color:#333;}
 .g-hd .m-nav a:hover{color:#21a557;}
 .g-hd .m-nav .search{width:18px;height:18px;background:url(../images/sprite.png) no-repeat left -15px;}
 .g-hd .m-nav .search:hover{background:url(../images/sprite.png) no-repeat left -33px;}
+
 
 /* 主体 */
 .g-bd{width:100%;background-color:#f8f8f8;}
@@ -118,8 +130,58 @@ a,a:hover{color:#333;}
 .g-bd .g-tabhd a{width:200px;height:50px;font-size:20px;line-height:50px;text-align:center;background-color:#fff;color:#666;}
 .g-bd .g-tabhd .active{background-color:#39a030;color:#fff;}
 
-.g-bd .g-content .design{height:1230px;}
-.g-bd .g-content .m-item{float:left;width:223px;height:226px;margin:0 20px 20px 0;box-shadow:0 1px 1px 1px #e6e6e6;background-color:#fff;}
+.g-bd .g-content{height:1250px;}
+.g-bd .g-content .design{}
+.g-bd .g-content .m-item{float:left;width:225px;height:230px;margin:0 20px 20px 0;box-shadow:0 1px 1px 1px #e6e6e6;background-color:#fff;} /* 如果content出现小数，证明可能长度不够，应该适当增加长度 */
+.g-bd .m-item img{margin-bottom:10px;}
+.g-bd .m-item p{width:210px;padding-left:5px;font-size:12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.g-bd .m-item .provider{padding:10px 5px;color:#999;}
+.g-bd .m-item span{padding:0 3px 0 18px;margin-left:5px;border:1px solid #ddd;border-radius:2px;font-size:10px;line-height:16px;text-align:center;color:#999;background:url(../images/sprite.png) no-repeat 0 -52px;}
+.g-bd .m-item strong{display:block;color:#ff3f00;padding-top:10px;padding-left:5px;}
+
+.g-bd .m-page{padding:30px 0 123px 0;} /* 两个实现方式：1、a设置inlin-block，但是这样的话两个a之间必须紧密放置，不然会有空隙；2、a设置block，然后设置float，这样的话可以保持a间有空格但是实际显示时不会有空隙。 */
+.g-bd .m-page a{display:block;float:left;padding:0 6px;margin:0 4px;line-height:20px;}
+.g-bd .m-page a:hover{background-color:#9dd8b1;color:#fff;}
+.g-bd .m-page .active{color:#39a030;}
+.g-bd .m-page .prve, .g-bd .m-page .next{width:30px;height:20px;padding:0;margin:0;}
+.g-bd .m-page .prve, .g-bd .m-page .prve:hover{background:#9dd8b1 url(../images/sprite.png) no-repeat -18px -16px;}
+.g-bd .m-page .next, .g-bd .m-page .next:hover{background:#9dd8b1 url(../images/sprite.png) no-repeat -48px -16px;}
+
+.g-bd .m-video{width:224px;height:230px;margin-bottom:20px;background-color:#fff;box-shadow:0 1px 1px 1px #e6e6e6;}
+.g-bd .m-video h3, .g-bd .m-list h3{height:55px;padding-left:20px;line-height:55px;border-bottom:1px solid #ddd;font-size:16px;}
+.g-bd .m-video>p{padding-left:20px;margin-top:20px;font-size:14px;color:#666;}
+.g-bd .m-video .trigger .videobg{padding-left:20px;margin-top:10px;}
+.g-bd .m-video .trigger .play{top:42px;left:90px;}
+
+.g-bd .m-video .popupvideo{position:fixed;top:0;left:0;z-index:999;width:100%;height:100%;}
+.g-bd .popupvideo .bg{width:100%;height:100%;z-index:999;background-color:rgba(0,0,0,0.8);}
+.g-bd .popupvideo .popup{position:fixed;top:50%;left:50%;width:950px;height:676px;margin:-338px 0 0 -475px;background-color:#fff;} 
+/* top和left为左上角顶点的位置。因此如果需要居中，还需要margin来执行位移.676/2=338,950/2=475 */
+.g-bd .popupvideo .popup p{padding-left:30px;font-size:20px;line-height:70px;}
+.g-bd .popupvideo .popup video{width:889px;height:538px;margin:0 30px;}
+.g-bd .popupvideo .popup .close{top:10px;right:10px;width:9px;height:9px;background:url(../images/sprite.png) no-repeat 0 0;}
+
+.g-bd .m-list{width:224px;height:776px;background-color:#fff;box-shadow:0 1px 1px 1px #e6e6e6;}
+.g-bd .m-list h3{margin-bottom:20px;}
+.g-bd .m-wrap{height:700px;}
+.g-bd .m-wrap ul{margin:0 20px;}
+.g-bd .m-wrap li{height:50px;margin-bottom:20px;}
+.g-bd .m-wrap a{display:block;height:50px;}
+.g-bd .m-wrap a img{float:left;margin-right:14px;}
+.g-bd .m-wrap a p{width:120px;padding:5px 0 8px 0;font-size:14px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;} /* 224-20*2-50-14=120px; */
+.g-bd .m-wrap a span{padding-left:18px;background:url(../images/sprite.png) no-repeat 0 -53px;}
 
 
 /* 脚部 */
+.g-ft{background-color:#2c3339;}
+.g-ft .m-ft{height:262px;margin:0 auto;}
+.g-ft .copyRight{width:540px;padding:90px 0 0 50px;color:#39a030;}
+.g-ft .copyRight .m-logo h2{font-size:22px;}
+.g-ft .copyRight .m-logo h2 span{margin-right:13px;padding-right:13px;top:3px;width:71px;font-size:28px;background:url(../images/sprite.png) no-repeat right 6px;}
+.g-ft .copyRight p{clear:both;margin-top:25px;line-height:25px;font-size:12.5px;color:rgba(255,255,255,0.6);}
+
+.g-ft .link{float:left;padding-top:80px;margin-right:100px;color:rgba(255,255,255,0.6);font-size:12.5px;}
+.g-ft .link:last-child{margin-right:0;}
+.g-ft .link a{display:block;margin-top:15px;color:rgba(255,255,255,0.6);font-size:14.5px;}
+.g-ft .link a:hover{text-decoration:underline;}
+.g-ft .weibo{padding-right:35px;background:url(../images/sprite.png) no-repeat -245px -25px;}

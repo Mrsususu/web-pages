@@ -1,3 +1,12 @@
+<!--1、注意：弹出登录框的书写-->
+<!--2、注意：滑动窗的使用，移动item的使用（即m-list部分）-->
+<!--3、注意：text-overflow的使用-->
+<!--4、注意：宽窄屏的自适应-->
+<!--5、注意：多行多列item的使用（即g-content部分）-->
+<!--6、注意：NEC的使用，g-，m-等的使用-->
+<!--7、注意：两层嵌套的使用（即m-workplace部分）-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +33,18 @@
 					<input class="attention" type="button" value="关注">
 					<a href="#" class="cancel f-dn f-pa">取消</a>
 					<span class="f-ib">粉丝45</span>
+					<div class="popuplog" style="display:none;">
+						<div class="bg"></div>
+						<div class="popup">
+							<p class="f-fwb">登录网易云课堂</p>
+							<form>
+								<input class="text" type="text" name="account" placeholder="账号">
+								<input class="text" type="password" name="password" placeholder="密码">
+								<input class="submit f-fwb" type="submit" value="登录">
+							</form>
+							<span class="close f-db f-pa"></span>
+						</div>
+					</div> <!--此处也为一个弹窗-->
 				</div>
 				<div class="m-nav f-fr">
 					<a href="#" target="_blank">网易公开课</a>
@@ -84,131 +105,387 @@
 						<a class="f-ib active" href="#" targrt="_blank">产品设计</a><a class="f-ib" href="#" targrt="_blank">编程语言</a> <!--注意，此处两个a标签之间不要留有空格，不然元素显示时候两个a之间也会有空格-->
 					</div>
 					<div class="g-content f-oh">
-						<div class="design">
+						<div class="design f-cb">
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 							<div class="m-item">
 								<img src="images/item1.png">
-								<p></p>
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
+								<div class="provider">音频帮</div>
+								<span>441</span>
+								<strong>免费</strong>
+							</div>
+							<div class="m-item">
+								<img src="images/item1.png">
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
+								<div class="provider">音频帮</div>
+								<span>441</span>
+								<strong>免费</strong>
+							</div>
+							<div class="m-item">
+								<img src="images/item1.png">
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
+								<div class="provider">音频帮</div>
+								<span>441</span>
+								<strong>免费</strong>
+							</div>
+							<div class="m-item">
+								<img src="images/item1.png">
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
+								<div class="provider">音频帮</div>
+								<span>441</span>
+								<strong>免费</strong>
+							</div>
+							<div class="m-item">
+								<img src="images/item1.png">
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
+								<div class="provider">音频帮</div>
+								<span>441</span>
+								<strong>免费</strong>
+							</div>
+
+														<div class="m-item">
+								<img src="images/item1.png">
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
+								<div class="provider">音频帮</div>
+								<span>441</span>
+								<strong>免费</strong>
+							</div>
+							<div class="m-item">
+								<img src="images/item1.png">
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
+								<div class="provider">音频帮</div>
+								<span>441</span>
+								<strong>免费</strong>
+							</div>
+							<div class="m-item">
+								<img src="images/item1.png">
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
+								<div class="provider">音频帮</div>
+								<span>441</span>
+								<strong>免费</strong>
+							</div>
+							<div class="m-item">
+								<img src="images/item1.png">
+								<p> 混音全揭秘 舞曲实战篇 揭秘音乐揭秘音乐</p>
 								<div class="provider">音频帮</div>
 								<span>441</span>
 								<strong>免费</strong>
 							</div>
 						</div>
 					</div>
-					<div class="m-page"></div>
+					<div class="m-page f-fr">
+						<a href="#" class="prve"></a>
+						<a href="#">1</a>						
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<a href="#" class="active">5</a>
+						<a href="#">6</a>
+						<a href="#">7</a>
+						<a href="#">8</a>
+						<a href="#" class="next"></a>
+					</div>
 				</div>
 				<div class="g-sd f-fr">
-					<div class="m-video"></div>
-					<div class="m-list"></div>
+					<div class="m-video">
+						<h3 class="f-fwn">机构介绍</h3>
+						<p>观看下面的视频来了解吧：</p>
+						<div class="trigger f-pr">
+							<img src="images/videobg.png" class="videobg">
+							<img src="images/play.png" class="play f-pa">
+						</div>
+						<div class="popupvideo" style="display:none;"> <!--在最外层设置fixed.注意这个div中的html和css。在弹窗中会用到-->
+							<div class="bg"></div>
+							<div class="popup">
+								<p>请观看下面视频：</p>
+								<video controls="controls" src="#" poster="images/videobgbig.png"></video>
+								<span class="close f-db f-pa"></span>
+							</div>
+						</div>
+					</div>
+					<div class="m-list">
+						<h3 class="f-fwn">最热排行</h3>
+						<div class="m-wrap f-oh">
+							<ul>
+								<li>
+									<a href="#">
+										<img src="images/listpic1.png">
+										<p>舞曲揭秘音乐揭秘舞曲揭秘</p>
+										<span>1</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic2.png">
+										<p>舞曲揭秘</p>
+										<span>2</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic1.png">
+										<p>舞曲揭秘音乐揭秘舞曲揭秘</p>
+										<span>3</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic2.png">
+										<p>舞曲揭秘</p>
+										<span>4</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic3.png">
+										<p>这是这是这是这是</p>
+										<span>5</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic1.png">
+										<p>舞曲揭秘音乐揭秘舞曲揭秘</p>
+										<span>6</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic2.png">
+										<p>舞曲揭秘</p>
+										<span>7</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic1.png">
+										<p>舞曲揭秘音乐揭秘舞曲揭秘</p>
+										<span>8</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic2.png">
+										<p>舞曲揭秘</p>
+										<span>9</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic3.png">
+										<p>这是这是这是这是</p>
+										<span>10</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic1.png">
+										<p>舞曲揭秘音乐揭秘舞曲揭秘</p>
+										<span>11/span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic2.png">
+										<p>舞曲揭秘</p>
+										<span>21576</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic1.png">
+										<p>舞曲揭秘音乐揭秘舞曲揭秘</p>
+										<span>21576</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic2.png">
+										<p>舞曲揭秘</p>
+										<span>21576</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic3.png">
+										<p>这是这是这是这是</p>
+										<span>21576</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic1.png">
+										<p>舞曲揭秘音乐揭秘舞曲揭秘</p>
+										<span>21576</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic2.png">
+										<p>舞曲揭秘</p>
+										<span>21576</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic1.png">
+										<p>舞曲揭秘音乐揭秘舞曲揭秘</p>
+										<span>21576</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic2.png">
+										<p>舞曲揭秘</p>
+										<span>21576</span>
+			                        </a>
+								</li>
+								<li>
+									<a href="#">
+										<img src="images/listpic3.png">
+										<p>这是这是这是这是</p>
+										<span>20</span>
+			                        </a>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 		<!-- 尾部导航 -->
-		<div class="g-ft"></div>
+		<div class="g-ft">
+			<div class="m-ft">
+				<div class="copyRight f-fl">
+					<div class="m-logo">
+						<h2 class="f-fwn"><span class="f-fwb f-pr">EDU</span>网易教育产品部</h2>
+				    </div>
+					<p>©2014 icourse163.org 浙ICP备08114786号-1<br>icourses.cn 京ICP备12020869号-2 京公网安备110102000459-2</p>
+				</div>
+				<div class="link friendLink">
+					<p>友情链接：</p>
+					<a href="#" target="_blank">网易公开课</a>
+					<a href="#" target="_blank">网易云课堂</a>
+					<a href="#" target="_blank">中国大学MOOC</a>
+				</div>
+				<div class="link us">
+					<p>我们：</p>
+					<a href="#" target="_blank">关于</a>
+					<a href="#" target="_blank">联系</a>
+					<a class="weibo" href="#" target="_blank">关注</a>
+				</div>
+				<div class="link more">
+					<p>更多：</p>
+					<a href="#" target="_blank">常见问题</a>
+					<a href="#" target="_blank">意见反馈</a>
+				</div>
+
+			</div>
+		</div>
 	</div>
 	
 </body>
