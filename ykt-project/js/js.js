@@ -34,3 +34,15 @@ function getCookie (key) {  //获取cookie
         }
     }
 }
+
+function removeCookie (key) {  //删除cookie
+    setCookie( key, '', -1 );
+}
+
+function logein() {
+    var ologin = $('j-login');
+    var oAttentioin = $('j-input');
+
+}
+
+
