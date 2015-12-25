@@ -92,11 +92,17 @@ a,a:hover{color:#333;}
 .g-hd .m-login .popuplog .popup{position:fixed;top:50%;left:50%;width:388px;height:288px;margin:-144px 0 0 -194px;background-color:#fff;}
 .g-hd .m-login .popuplog p{margin:30px 0 20px 40px;font-size:17px;color:#444;}
 .g-hd .m-login .popuplog .close{top:10px;right:10px;width:9px;height:9px;background:url(../images/sprite.png) no-repeat 0 0;}
+/*
 .g-hd .m-login .popuplog form{margin:0 40px;}
 .g-hd .m-login .popuplog input{border:none;outline:none;}
-.g-hd .m-login .popuplog .text{width:290px;height:40px;margin-bottom:30px;text-indent:10px;font-size:14px;border-top: 1px solid #dfdfdf;border-left: 1px solid #dfdfdf;box-shadow:inset 1px 1px 2px 1px #f1f1f1;background-color:#fafafa;color:#000;} /* 注意text-indent的作用 */
-.g-hd .m-login .popuplog .submit{width:293px;height:46px;color:#fff;background:url(../images/sprite.png) no-repeat 0 -165px;cursor:pointer;}
-
+.g-hd .m-login .popuplog .text{width:290px;height:40px;margin-bottom:30px;text-indent:10px;font-size:14px;border-top: 1px solid #dfdfdf;border-left: 1px solid #dfdfdf;box-shadow:inset 1px 1px 2px 1px #f1f1f1;background-color:#fafafa;color:#000;}
+.g-hd .m-login .popuplog .submit{width:293px;height:46px;color:#fff;background:url(../images/sprite.png) no-repeat 0 -85px;cursor:pointer;} 
+ */
+.g-hd .m-login .popuplog input{border:none;outline:none;}
+.g-hd .m-login .popuplog .form{margin:0 40px 30px 40px;}
+.g-hd .m-login .popuplog .form input{display:block;width:290px;height:40px;text-indent:10px;font-size:14px;border-top: 1px solid #dfdfdf;border-left: 1px solid #dfdfdf;box-shadow:inset 1px 1px 2px 1px #f1f1f1;background-color:#fafafa;color:#000;}  /* 注意text-indent的作用 */
+.g-hd .m-login .popuplog label{position: absolute; top:12px; left:12px; font-size:16px; color:#ccc;}
+.g-hd .m-login .popuplog .submit{margin:0 0 30px 40px;width:293px;height:46px;color:#fff;background:url(../images/sprite.png) no-repeat 0 -85px;cursor:pointer;}
 .g-hd .m-nav{padding-right:12px;}
 .g-hd .m-nav a{margin-left:54px;font-size:16px;color:#333;}
 .g-hd .m-nav a:hover{color:#21a557;}
@@ -112,9 +118,9 @@ a,a:hover{color:#333;}
 .g-bd .m-slide li{float:left;width:10px;height:10px;border-radius:50%;margin:5px;background-color:#fff;text-indent:-1000px;}
 .g-bd .m-slide .active{background-color:#333;}
 
-.g-bd .m-prodect .icon1{background:url(../images/sprite.png) no-repeat 0 -85px;}
-.g-bd .m-prodect .icon2{background:url(../images/sprite.png) no-repeat -80px -85px;}
-.g-bd .m-prodect .icon3{background:url(../images/sprite.png) no-repeat -160px -85px;}
+.g-bd .m-prodect .icon1{background:url(../images/sprite.png) no-repeat 0 -131px;}
+.g-bd .m-prodect .icon2{background:url(../images/sprite.png) no-repeat -80px -131px;}
+.g-bd .m-prodect .icon3{background:url(../images/sprite.png) no-repeat -160px -131px;}
 .g-bd .m-prodect .item h3{padding-top:46px;color:#333;font-size:22px;line-height:52px;} /* 内容会在前面浮动元素的margin外面 */
 .g-bd .m-prodect .item p{height:120px;color:#666;font-size:14px;line-height:24px;}
 .g-bd .m-prodect .item a{ font-size:14px; color:#39a030;}
