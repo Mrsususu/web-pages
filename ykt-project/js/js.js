@@ -39,7 +39,7 @@ function removeCookie (key) {  //删除cookie
     setCookie( key, '', -1 );
 }
 
-function serialize (data) {  // 设置参数
+function serialize (data) {  // 设置参数序列化
     if (!data) return '';
     var pairs = [];
     for (var name in data){
@@ -58,7 +58,7 @@ function get(url,options,callback) {  //get方法
     xhr.onreadystatechange = function() {
         if(xhr.readyState == 4) {
             if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-                callback(xhr.responseText);
+                callback(xhr.responseText); //反馈的就是API返回的值
             } else {
                 alert ( 'request failed : ' + xhr.status);
             }
@@ -106,6 +106,7 @@ function login() {
     var oClose = getElementsByClassName(ologin,'close');
     var oInput = ologin.getElementsByTagName('input');
     var oLabel = ologin.getElementsByTagName('label');
+    var oSpan = ologin.getElementsByTagName('span');
     var oButton = getElementsByClassName(ologin,'submit');
     var oCancel = getElementsByClassName(ologin,'cancel');
 
@@ -122,12 +123,50 @@ function login() {
     focus(0);
     focus(1);
 
-    oAttentioin.onclick = function() {
-        if (!getCookie('loginSuc')){
-            oPopuplog[0].style.display = 'block';
-            setCookie( 'followSuc', true, 36500 );
-        }
-    }
-}
+    oSpan[1].onclick = function() {  //弹窗的x点击后关闭登录框
+        oPopuplog[0].style.display = 'none';
+    };
 
+    oButton[0].onclick = function() { //点击submit提交表单
+        var userName1 = hex_md5(oInput[1].value);
+        var password1 = hex_md5(oInput[2].value);
+        get('http://study.163.com/webDev/login.htm', {userName:userName1,password:password1}, function(a){
+            if( a === '1'){  //用户名验证通过
+                oPopuplog[0].style.display = 'none'; //登陆框消失
+                setCookie('loginSuc', '1', 36500);
+                get('http://study.163.com/webDev/attention.htm', '', function(b){ //调用关注API
+                    if( b === '1'){ //关注已成功
+                        setCookie('followSuc', '1', 36500);
+                        oAttentioin.className = 'active';
+                        oAttentioin.value = '已关注';
+                        oAttentioin.disabled = false;
+                        oCancel[0].style.display = 'block'; 
+                    }
+                });
+            } else {
+                alert('帐号密码错误，请重新输入');
+            }
+        });
+    }
+
+    oAttentioin.onclick = function() { //点击“关注”，判断登录的 cookie 是否已设置
+        if (!getCookie('loginSuc')){ // 登陆cookie未设置，表明未登陆，则跳出登录框
+            oPopuplog[0].style.display = 'block';
+        } else {  // 登陆cookie已设置，表明已登陆，则修改样式为已关注active的样式
+            oAttentioin.className = 'active';
+            oAttentioin.value = '已关注';
+            oAttentioin.disabled = false; //disabled 属性规定应该禁用 input 元素，此时“已关注”按钮不能再做其他操作
+            oCancel[0].style.display = 'block'; //取消键显示
+        }
+    };
+
+    oCancel[0].onclick = function() { //取消关注
+        removeCookie('followSuc');
+        removeCookie('loginSuc');
+        oAttentioin.className = 'attention';
+        oAttentioin.value = '关注';
+        oAttentioin.disabled = true;
+        this.style.display = 'none';
+    };
+}
 login();

@@ -83,9 +83,11 @@ a,a:hover{color:#333;}
 .g-hd .m-login{top:8px;color:#666;}
 .g-hd .m-login .attention{width:54px;height:21px;padding-left:22px;border:none;border-radius:2px;background:#21a557 url(../images/sprite.png) -18px 0;color:#fff;font-size:12px;line-height:21px;}
 .g-hd .m-login .attention:hover{background-color:#2fb556;cursor:pointer;}
-.g-hd .m-login .cancel{top:5px;padding:0 5px 0 5px;border-left:1px solid #666;}
+.g-hd .m-login .active{width:106px;height:21px;padding-left:22px;border:1px solid #efefef;background:#fff url(../images/sprite.png) no-repeat -278px -192px;border-radius:2px;color:#333;outline:none;text-align:left;}
+.g-hd .m-login .cancel{top:5px;left:66px;padding:0 5px 0 5px;border-left:1px solid #ccc;color:#999;}
 .g-hd .m-login .cancel:hover{color:#21a557;text-decoration:underline;}
-.g-hd .m-login span{margin-left:14px;}
+.g-hd .m-login .fans{margin-left:14px;}
+
 
 .g-hd .m-login .popuplog{position:fixed;top:0;left:0;z-index:999;width:100%;height:100%;}
 .g-hd .m-login .popuplog .bg{width:100%;height:100%;background-color:rgba(0,0,0,0.8);}

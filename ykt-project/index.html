@@ -6,6 +6,7 @@
 <!--6、注意：NEC的使用，g-，m-等的使用-->
 <!--7、注意：两层嵌套的使用（即m-workplace部分）-->
 
+<!--8、一个神奇的地方，如果input框没有type="button"，那么设置宽度时其width宽度为content部分；如果input有type="button"，那么设置宽度时其width宽度为content+padding+border部分。因为这会改变浏览器的user agent stylesheet。-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +33,7 @@
 				<div id="j-login" class="m-login f-fl f-pr">
 					<input  id="j-input" class="attention" type="button" value="关注">
 					<a href="#" class="cancel f-dn f-pa">取消</a>
-					<span class="f-ib">粉丝45</span>
+					<span class="fans f-ib">粉丝45</span>
 					<div class="popuplog" style="display:none;">
 						<div class="bg"></div>
 						<div class="popup">
