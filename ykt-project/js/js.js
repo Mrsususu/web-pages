@@ -170,3 +170,19 @@ function login() {
     };
 }
 login();
+
+function palyvideo() {  //弹出视频层
+    var oList1 = $('j-list1');
+    var oTrigger = getElementsByClassName(oList1,'trigger');
+    var oPopupvideo = getElementsByClassName(oList1,'popupvideo');
+    var oClose = getElementsByClassName(oList1,'close');
+    var myVideo = oList1.getElementsByTagName('video');
+    oTrigger[0].onclick = function() {
+        oPopupvideo[0].style.display = 'block';
+    }
+    oClose[0].onclick = function() {
+        oPopupvideo[0].style.display = 'none';
+        myVideo[0].pause();  //关闭视频/暂停当前视频
+    }
+}
+palyvideo();//需求七
