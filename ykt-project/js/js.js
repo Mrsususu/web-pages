@@ -186,3 +186,91 @@ function palyvideo() {  //弹出视频层
     }
 }
 palyvideo();//需求七
+
+function slide() {
+    var oBanner = $('j-slide');
+    var oLink = oBanner.getElementsByTagName('a')[0];
+    var oImg = oBanner.getElementsByTagName('img')[0];
+    var oUl = oBanner.getElementsByTagName('ul')[0];
+    var aLi = oBanner.getElementsByTagName('li');
+    var data = [
+        { link: 'http://open.163.com/' , src : 'images/banner1.jpg' },
+        { link: 'http://study.163.com/' , src : 'images/banner2.jpg' },
+        { link: 'http://www.icourse163.org/' , src : 'images/banner3.jpg' }
+    ];
+
+    for(var i = 0; i < data.length; i++) {
+        var oLi = document.createElement('li');
+        var aNum = document.createTextNode(i+1);
+        var num = 0;
+        oLi.appendChild(aNum);
+        oUl.appendChild(oLi);
+
+        oLink.href = data[0].link;
+        oImg.src = data[0].src;
+        aLi[0].className = 'active';
+        //初始化结束
+        aLi[i].index = i;   //一旦点击，则到该点击的图片页
+        aLi[i].onclick = function() {
+            num = this.index;
+            showslide(this.index);
+        }
+    }
+
+    var oWindow = document.body.clientWidth;   //使下面的点位置居中
+    oUl.style.left = (oWindow - 20 * aLi.length)/2 + 'px';
+    window.onresize = function() {
+        oWindow = parseFloat(document.body.clientWidth);
+        oUl.style.left = (oWindow - 20 * aLi.length)/2 + 'px';
+    }
+
+    function slideshow(index) {
+        oImg.style.opacity = 0;
+        oImg.style.transition = '';
+        for(var i = 0; i < aLi.length; i++) {
+            aLi[i].className = '';
+        }
+        oLink.href = data[index].link;
+        oImg.src = data[index].src;
+        aLi[index].className = 'active';
+        setTimeout( function(){
+            oImg.style.opacity = 1;
+            oImg.style.transition = '0.5s';
+        },30);
+    }
+
+    function autoplay() { //每隔5s自动播放
+        timer = setInterval(
+            function() {
+                num = (num + 1)%aLi.length;
+                slideshow(num);  //每次展示的是下一个图片
+            },5000);
+    }
+
+    oBanner.onmouseover = function() {  //鼠标移到图片上时，停止自动播放
+        clearInterval(timer);
+    } 
+    oBanner.onmouseout = function() {  //鼠标移开图片时，启动自动播放
+        autoplay();
+    }
+    autoplay();
+}
+slide();
+
+function tab() {
+    var oTab = $('j-tab');
+    var oTabhd = getElementsByClassName(oTab,'g-tabhd');    
+    var oA = oTabhd[0].getElementsByTagName('a');
+
+    for (var i = 0; i < oA.length; i++){
+        oA[i].index = i;
+
+        oA[i].onclick = function() {
+            for(var n = 0; n < oA.length; n++){
+                oA[n].className = 'f-ib';                
+            }
+            oA[this.index].className = 'f-ib active';
+        }
+    }
+}
+tab();

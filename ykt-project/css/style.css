@@ -116,7 +116,7 @@ a,a:hover{color:#333;}
 .g-bd{width:100%;background-color:#f8f8f8;}
 .g-bd .g-top{background-color:#ffffff;}
 .g-bd .g-top .m-slide{margin:0 auto;}
-.g-bd .m-slide ul{left:778px;bottom:20px;} /* !!此处，left需要用js来写入，以保证自适应 */
+.g-bd .m-slide ul{bottom:20px;} /* !!此处，left需要用js来写入，以保证自适应 */
 .g-bd .m-slide li{float:left;width:10px;height:10px;border-radius:50%;margin:5px;background-color:#fff;text-indent:-1000px;}
 .g-bd .m-slide .active{background-color:#333;}
 
