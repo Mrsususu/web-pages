@@ -257,6 +257,15 @@ function slide() {
 }
 slide();
 
+function getStyle(obj,attr) { //获取外部（link）或内部（style）样式。注意，style只能获取内联样式，即在html标签中的样式。
+    if (obj.currentStyle) {
+        return obj.currentStyle[attr];  //IE中常见
+    } 
+    else {
+        return getComputedStyle(obj)[attr];  //firefox，chrome中可用
+    }
+}
+
 function tab() {
     var oTab = $('j-tab');
     var oTabhd = getElementsByClassName(oTab,'g-tabhd');    
