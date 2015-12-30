@@ -36,6 +36,8 @@ a,a:hover{color:#333;}
 .f-fwb{font-weight:bold;}
 .f-oh{overflow:hidden;}
 
+.f-cb,.f-cbli li{zoom:1;}
+.f-toe{overflow:hidden;word-wrap:normal;white-space:nowrap;text-overflow:ellipsis;}
 /* 响应式 */
 /* 宽屏 */  /* 注意两个example采用的两层嵌套方法part1和part2 */
 @media screen and (min-width:1205px){
@@ -48,7 +50,7 @@ a,a:hover{color:#333;}
 	.g-bd .m-workplace .box{width:1616px;margin:0 auto;} /* 必须添加width，不然margin不起作用。因为width大小会默认和父元素一样大，因为box里面是float元素，不会撑大box盒子。 */
 	.g-bd .g-bot{width:1205px;}
 	.g-bd .g-content{width:960px;} /* width为225 margin-right为20 (225+20)*4-20=960 */ 
-	.g-bd .g-content .design{width:980px;} /* width为225 margin-right为20 (225+20)*4=980 */
+	.g-bd .g-content .design, .g-bd .g-content .language{width:980px;} /* width为225 margin-right为20 (225+20)*4=980 */
 	.g-ft .m-ft{width:1205px;}
 	}
 /* 窄屏 */
@@ -63,7 +65,7 @@ a,a:hover{color:#333;}
 	.g-bd .m-workplace .box{width:1616px;margin:0 -126px;} /* 实际会有宽度320*5+4*4=1616.然后左移一部分使其居中(1364-1616)/2=-126px */ /* example2 part2 */
 	.g-bd .g-bot{width:960px;}
 	.g-bd .g-content{width:715px;} /* m-item的width为225 margin-right为20【其box-shadow可以不考虑】 (225+20)*3-20=715 */ /* 其实实际图片宽度 */
-	.g-bd .g-content .design{width:735px;}
+	.g-bd .g-content .design, .g-bd .g-content .language{width:735px;}
 	.g-ft .m-ft{width:960px;}
 	}
 
@@ -138,14 +140,20 @@ a,a:hover{color:#333;}
 .g-bd .g-tabhd a{width:200px;height:50px;font-size:20px;line-height:50px;text-align:center;background-color:#fff;color:#666;}
 .g-bd .g-tabhd .active{background-color:#39a030;color:#fff;}
 
-.g-bd .g-content{height:1250px;}
-.g-bd .g-content .design{}
-.g-bd .g-content .m-item{float:left;width:225px;height:230px;margin:0 20px 20px 0;box-shadow:0 1px 1px 1px #e6e6e6;background-color:#fff;} /* 如果content出现小数，证明可能长度不够，应该适当增加长度 */
-.g-bd .m-item img{margin-bottom:10px;}
-.g-bd .m-item p{width:210px;padding-left:5px;font-size:12px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.g-bd .g-content{height:1250px;}/*.g-bd .g-content{margin-left:-10px;}，对应于.g-bd .g-content .m-item{margin:0 10px 20px 10px;}*/
+.g-bd .g-content .m-item{position:relative;float:left;width:225px;height:230px;margin:0 20px 20px 0;box-shadow:0 1px 1px 1px #e6e6e6;background-color:#fff;} /* 如果content出现小数，证明可能长度不够，应该适当增加长度 */
+.g-bd .m-item img{margin-bottom:10px;width:223px;} /*照片实际上有大小，因而需要统一设置宽度*/
+.g-bd .m-item p{width:210px;padding-left:5px;font-size:12px;}
 .g-bd .m-item .provider{padding:10px 5px;color:#999;}
 .g-bd .m-item span{padding:0 3px 0 18px;margin-left:5px;border:1px solid #ddd;border-radius:2px;font-size:10px;line-height:16px;text-align:center;color:#999;background:url(../images/sprite.png) no-repeat 0 -52px;}
 .g-bd .m-item strong{display:block;color:#ff3f00;padding-top:10px;padding-left:5px;}
+.g-bd .m-item a{ display:none;cursor:pointer;}
+.g-bd .m-item:hover a{ display:block; position:absolute; top:-10px; left:-10px; width:461px; min-height:218px; background:#fff; padding:10px; box-shadow:0 0 2px 1px #d3d1d2; z-index:99;}
+.g-bd .m-item a img{ float:left;}
+.g-bd .m-item a h3{ font-size:20px; font-weight: normal; margin:0 10px 12px 233px; color:#333; }
+.g-bd .m-item a span{font-size:12px; border:none; background:url(../images/sprite.png) no-repeat 0 -52px; color:#666; }
+.g-bd .m-item a .categoryname{ height:35px; font-size:12px; line-height: 18px; padding:10px 0 0 233px; color:#666;}
+.g-bd .m-item a .description{ clear:both; width:426px; padding-left:15px; font-size:14px; line-height:20px; }
 
 .g-bd .m-page{padding:30px 0 123px 0;} /* 两个实现方式：1、a设置inlin-block，但是这样的话两个a之间必须紧密放置，不然会有空隙；2、a设置block，然后设置float，这样的话可以保持a间有空格但是实际显示时不会有空隙。 */
 .g-bd .m-page a{display:block;float:left;padding:0 6px;margin:0 4px;line-height:20px;}
@@ -173,9 +181,9 @@ a,a:hover{color:#333;}
 .g-bd .m-list h3{margin-bottom:20px;}
 .g-bd .m-wrap{height:700px;}
 .g-bd .m-wrap ul{margin:0 20px;}
-.g-bd .m-wrap li{height:50px;margin-bottom:20px;}
+.g-bd .m-wrap li{height:50px;margin-bottom:20px;cursor:pointer;}
 .g-bd .m-wrap a{display:block;height:50px;}
-.g-bd .m-wrap a img{float:left;margin-right:14px;}
+.g-bd .m-wrap a img{float:left;height:50px;width:50px;margin-right:14px;}
 .g-bd .m-wrap a p{width:120px;padding:5px 0 8px 0;font-size:14px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;} /* 224-20*2-50-14=120px; */
 .g-bd .m-wrap a span{padding-left:18px;background:url(../images/sprite.png) no-repeat 0 -53px;}
 

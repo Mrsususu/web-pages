@@ -254,7 +254,7 @@ function slide() {
         autoplay();
     }
     autoplay();
-}
+}  //需求四
 slide();
 
 function getStyle(obj,attr) { //获取外部（link）或内部（style）样式。注意，style只能获取内联样式，即在html标签中的样式。
@@ -266,20 +266,151 @@ function getStyle(obj,attr) { //获取外部（link）或内部（style）样式
     }
 }
 
+
 function tab() {
     var oTab = $('j-tab');
-    var oTabhd = getElementsByClassName(oTab,'g-tabhd');    
-    var oA = oTabhd[0].getElementsByTagName('a');
+    var oTabhd = getElementsByClassName(oTab,'g-tabhd'); 
+    var oBtn = oTabhd[0].getElementsByTagName('a'); 
+    var oDesign = getElementsByClassName(oTab,'design');
+    var oLanguage = getElementsByClassName(oTab,'language');
+    var oPart = getElementsByClassName(oTab,'part');
 
-    for (var i = 0; i < oA.length; i++){
-        oA[i].index = i;
+    function setData(num,element) {
+        get('http://study.163.com/webDev/couresByCategory.htm', {pageNo:1,psize:20,type:num}, function(data){
+            data = JSON.parse(data);
+            for (var i = 0; i < data.list.length; i++){
+                //基本显示team部分
+                var oTeam = document.createElement('div');
+                oTeam.className = 'm-item';
+                var oImg = document.createElement('img');
+                oImg.src = data.list[i].middlePhotoUrl;
+                var oP = document.createElement('p');
+                oP.className = 'f-toe';
+                oP.innerHTML = data.list[i].name;
+                var oDiv = document.createElement('div');
+                oDiv.className = 'provider';
+                oDiv.innerHTML = data.list[i].provider;
+                var oSpan = document.createElement('span');
+                oSpan.innerHTML = data.list[i].learnerCount;             
+                var oStrong = document.createElement('strong');
+                if( data.list[i].price == 0){
+                    oStrong.innerHTML = '免费';
+                } else {
+                    oStrong.innerHTML = '￥' + data.list[i].price;
+                }
 
-        oA[i].onclick = function() {
-            for(var n = 0; n < oA.length; n++){
-                oA[n].className = 'f-ib';                
+                oTeam.appendChild(oImg);
+                oTeam.appendChild(oP);
+                oTeam.appendChild(oDiv);
+                oTeam.appendChild(oSpan);
+                oTeam.appendChild(oStrong);
+
+                //鼠标放上后的team部分
+                if(!data.list[i].categoryName){
+                    data.list[i].categoryName = '无';
+                }
+                var oA = document.createElement('a');
+                oA.innerHTML = '<img src=\"' + data.list[i].middlePhotoUrl + '\"/><h3>' + data.list[i].name + '</h3><span>' + data.list[i].learnerCount + '人在学</span><p class="categoryname">发布者：' + data.list[i].provider + '</br>分类：' + data.list[i].categoryName + '</p><p class="description">' +  data.list[i].description + '</p>';
+                
+                oTeam.appendChild(oA);
+
+                //把team元素放入element中
+                element.appendChild(oTeam);
             }
-            oA[this.index].className = 'f-ib active';
+        }); //end of get
+    } //end of setData
+
+    setData(10,oDesign[0]);
+    setData(20,oLanguage[0]);  //需求五
+
+/* 可以起到效果，为参考采用的方案，本例采用下面的tab方案解决
+    oBtn[0].onclick = function(){
+        oDesign[0].style.display = 'block';
+        this.className = 'f-ib active';
+        oLanguage[0].style.display = 'none';
+        oBtn[1].className = 'f-ib';
+        return false;
+    };
+    oBtn[1].onclick = function(){
+        oDesign[0].style.display = 'none';
+        oBtn[0].className = 'f-ib';
+        oLanguage[0].style.display = 'block';
+        this.className = 'f-ib active';
+        return false;
+    };
+*/
+
+    for (var i = 0; i < oBtn.length; i++){
+        oBtn[i].index = i;
+
+        oBtn[i].onclick = function() {
+            for(var n = 0; n < oBtn.length; n++){
+                oBtn[n].className = 'f-ib';
+                oPart[n].style.display = 'none';                
+            }
+            oBtn[this.index].className = 'f-ib active';
+            oPart[this.index].style.display = 'block'; 
+            return false;  //起到效果就是，避免a标签跳到页面顶部，而是在点击时还能停留在当前位置
         }
-    }
+    }  //需求六
+
 }
-tab();
+tab();  
+
+function setList() {  //在滚动list中把各个li都放入，数据从API读取
+    var oList2 = $('j-list2');
+    var oUl = oList2.getElementsByTagName('ul');
+
+    get('http://study.163.com/webDev/hotcouresByCategory.htm', {}, function(data){
+        var arr = JSON.parse(data);
+        for(var i = 0; i < 20; i++){
+            var aLi = document.createElement('li');
+            var aA = document.createElement('a');
+            var aImg = document.createElement('img');
+            var aP = document.createElement('p'); 
+            var aSpan = document.createElement('span');
+
+            aImg.src = arr[i].smallPhotoUrl;  
+            aP.innerHTML = arr[i].name;
+            aSpan.innerHTML = arr[i].learnerCount;
+
+            aA.appendChild(aImg);
+            aA.appendChild(aP);
+            aA.appendChild(aSpan);
+            aLi.appendChild(aA);
+            oUl[0].appendChild(aLi);
+        }
+    });    
+}  
+setList();
+
+function change() {
+    var oList2 = $('j-list2');
+    var oUl = oList2.getElementsByTagName('ul');
+    var Top = 0;
+
+    function autoplay() {
+        timer = setInterval(
+            function() {
+                if (Top == -700) {
+                    Top = 0;
+                } else {
+                    Top = Top - 70;    
+                }
+                oUl[0].style.top = Top + 'px';
+            },5000);
+    }
+
+    oList2.onmouseover = function(){
+        clearInterval(timer);
+    }
+    oList2.onmouseout = function(){
+        autoplay();
+    }
+
+    autoplay();
+}
+change();
+
+
+
