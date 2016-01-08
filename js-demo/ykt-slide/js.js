@@ -77,6 +77,19 @@ function animation(ele, from, to, callback){
 	intervalId = setInterval(step, STEP);
 }
 
+function process(ele, drtn, intrvl, callback) {
+	var intervalId;
+	var width = ele.clientWidth;
+	var prcss = getElementsByClassName(ele, 'prcss')[0];
+	var step = function(){
+
+	}
+    if (!!intervalId){
+    	intervalId = clearInterval(intervalId);
+    }
+    intervalId = setInterval(step, intrvl);
+}
+
 window.onload = function(){
 	var imgwrap = $('imgwrap');
 	var imgs = imgwrap.children;
