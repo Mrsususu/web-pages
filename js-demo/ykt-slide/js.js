@@ -11,21 +11,22 @@ function getNum(str){
 	}		
 }
 
+/*
 function getElementsByClassName(element, names){
 	if(document.getElementsByClassName){
 		return element.getElementsByClassName(names);
 	} else {
 		var elements = element.getElementsByTagName('*');
 		var resule = [];
-		var flag;
+		var flag, classNameStr, element;
 
-		var names = names.split(' ');
+		names = names.split(' ');
 
-		for(var i = 1; i < elements.length; i++){
-			var element = elements[i];
-			var classNameStr = ' ' + element.className + ' ';
+		for(var i = 0; i < elements.length; i++){
+			element = elements[i];
+			classNameStr = ' ' + element.className + ' ';
 			flag = true;
-			if(var j = 1; j < names.length; j++){
+			if(var j = 0; j < names.length ; j++){
 				if(classNameStr.indexOf(' ' + names[j] + ' ') == -1){
 					flag = false;
 					break;
@@ -38,7 +39,36 @@ function getElementsByClassName(element, names){
 		return result;
 	}
 }
+*/
+function getElementsByClassName(element, names) {  //获取class元素
+    if (element.getElementsByClassName){
+        return element.getElementsByClassName(names);
+    } else {
+        var elements = element.getElementsByTagName('*');
+        var result=[];
+        var element,
+            classNameStr,
+            flag,
+            name;
 
+        names = names.split(' ');
+        for( var i = 0; element = elements[i]; i++) {
+            classNameStr = ' ' + element.className + ' ';
+            flag = true;
+            for( var j = 0; name = names[j]; j++) {
+                if(classNameStr.indexOf(' ' + name + ' ') == -1){
+                    flag == false;
+                    break;
+                }
+            }
+            if(flag) {
+                result.push(element);
+            }            
+        }
+        return result;
+    }
+
+}
 
 
 var SPEED = 500;//图片切换速度：一张图长度为500步
@@ -65,8 +95,8 @@ function animation(ele, from, to, callback){
 		} else {
 			intervalId = clearInterval(intervalId); //如果正常取消，则clearInterval的返回值为undefined
 			ele.style.left = to + 'px';
-			if(callback)
-				callback();
+			/*if(callback)
+				callback();*/
 		}		
 	}
 	if(!!intervalId){ 
@@ -81,14 +111,36 @@ function process(ele, drtn, intrvl, callback) {
 	var intervalId;
 	var width = ele.clientWidth;
 	var prcss = getElementsByClassName(ele, 'prcss')[0];
+	var offset = Math.floor(width * intrvl / drtn);
+	var tmpCurrent = CURRENT;
 	var step = function(){
-
+		/* 还要考虑一种情况，就是一旦在prcss进度条前进过程中，CURRENT发生突变，则当前prcss进度条需要清空 */
+		if( tmpCurrent != CURRENT ){
+			intervalId = clearInterval(intervalId);
+			prcss.style.width = '0px';
+			return;  /*注意此环境下要立刻return*/
+		}
+		var des = prcss.style.width + offset;
+		if(des < width){
+			prcss.style.width = getNum(prcss.style.width) + offset + 'px';
+		} else {
+			intervalId = clearInterval(intervalId);
+			prcss.style.width = '0px';
+			PREV = CURRENT;
+			CURRENT = NEXT;
+			NEXT++;
+			NEXT = NEXT % NUMBER;
+			if(callback){
+				callback();
+			}
+		}
 	}
     if (!!intervalId){
     	intervalId = clearInterval(intervalId);
     }
     intervalId = setInterval(step, intrvl);
 }
+
 
 window.onload = function(){
 	var imgwrap = $('imgwrap');
@@ -102,8 +154,41 @@ window.onload = function(){
 		animation(imgwrap, from, to, callback);
 	}
 //切换（进度条动画+图片位移动画）
-	
+	var goOn = function(drtn, intrvl){
+		var currentNav = navs[CURRENT];
+		var prcsswrap = getElementsByClassName(currentNav, 'prcsswrap')[0];
+		process(prcsswrap, drtn, intrvl, function(){
+			slide(drtn, intrvl, function(){
+				goOn(drtn, intrvl);
+			});
+		});
+	}
+
 //点击响应
+	$('navswrap').addEventListener('click', function(){
+		var getElement = function(eve, fliter){
+			var element = eve.target;
+			while(element){
+				if(fliter(element))
+					return element;
+				element = element.parentNode;
+			}
+		};
 
+		return function (event) {
+			var des = getElement(event, function (ele){
+				return (ele.className.indexOf('navwrap') != -1);
+			});
+			var index = parseInt(des.dataset.index);
+			PREV = CURRENT;
+			CURRENT = index;
+			NEXT = (CURRENT + 1) % NUMBER;
+			slide(DURATION, INTERVAL, function(){
+				goOn(DURATION, INTERVAL);
+			});	
+		}	
+	});
+//自动播放部分	
+	goOn(DURATION, INTERVAL);
+};
 
-}
