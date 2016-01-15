@@ -1,0 +1,107 @@
+<!--
+
+/******   慕课课件笔记：固定层效果 & 导航层菜单的制作   ******/
+
+/** 固定层效果 part  **/
+··position定位有三种形式的定位：静态/相对/绝对
+··position属性值4种：static[默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。]/absolute/relative/fixed/inherit[规定应该从父元素继承 position 属性的值]
+··绝对定位：完全脱离标准文档流，兄弟元素不再受其影响。absolute&fixed属于绝对定位。
+··元素设置定位（绝对或相对）后，就具有偏移属性和堆叠属性(z-index)
+··父元素：就是紧贴其的外层元素
+··absolute：如果其已经有定位的祖先元素，则其偏移参照距离其最近的、已定位的祖先元素为基准进行偏移。
+··fixed：
+	1、无论其有无定位的祖先元素，都以浏览器可视窗口为基准进行偏移。被他遮盖的元素可以从其下面穿过，即在空间上有堆叠。
+	2、如果希望该固定定位元素包含在其父包含块中，则不需要对其设置偏移量（eg：已知一 div 高 35px，紧邻其后的 X 元素上外边距为 15px，为该 div 设置 fixed 定位后。div与浏览器可视窗口上边界相距15px）（！！针对设置了position为fixed而没有设置top等偏移值的情况！！）。
+··absolute和fixed的相同点：1、完全脱离标准文档流;2、未设置偏移量时，都定位在父元素左上角
+··absolute和fixed的不同点：1、设置偏移量时，其偏移参照基准不一样;2、表现形式不一样（只有在产生滚动条时，fixed在滚动时仍然固定在可视页面）
+··行内样式(写在标签内)>内部样式(写在<head>内)>外部样式表
+
+/** 导航层菜单的制作 part  **/
+js:
+clientWidth:是对象可见的宽度
+offsetwidth:是元素相对父元素的偏移宽度。等于border+padding+width
+clientwidth:是元素的可见宽度。等于padding+width
+-->
+
+<!-- 主要是编写js部分，使得nav可以伸缩。 -->
+<!-- 导航层菜单的制作部分编程练习代码 -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>动画菜单</title>
+	<style type="text/css">
+	* { margin: 0; padding: 0; font-size: 14px; }
+	a { color: #333; text-decoration: none }
+	ul{ list-style: none; }
+	.nav {height: 30px; border-bottom: 5px solid #F60; margin-left:50px; width:600px;}
+	.nav li { float: left; position:relative; height:30px; width:120px }
+	.nav li a { display: block; height: 30px; text-align: center; line-height: 30px; width:120px; background: #efefef; margin-left: 1px; }
+	.subNav{ position:absolute; top:30px; left:0; width:120px; height:0; overflow:hidden}
+	.subNav li a{ background:#ddd }
+	.subNav li a:hover{ background:#efefef}
+	</style>
+	<script>
+	window.onload=function(){
+	    var aLi=document.getElementsByTagName('li');
+		for(var i=0; i<aLi.length; i++){
+			aLi[i].onmouseover=function(){
+	            //鼠标经过一级菜单，二级菜单动画下拉显示出来
+		        oSubNav = this.getElementsByTagName('ul')[0];
+	            if(oSubNav){
+	                var This = oSubNav;
+	                clearInterval(This.time);
+	                This.time = setInterval(function(){
+	                    This.style.height = This.offsetHeight + 16 + 'px';
+	                    if(This.offsetHeight >= 120){
+	                        clearInterval(This.time);
+	                    }
+	                },30);
+	            }    
+	    
+			}
+	        //鼠标离开菜单，二级菜单动画收缩起来。		
+			aLi[i].onmouseout=function(){
+				oSubNav = this.getElementsByTagName('ul')[0];
+	            if(oSubNav){
+	                var This = oSubNav;
+	                clearInterval(This.time);
+	                This.time = setInterval(function(){
+	                    This.style.height = This.offsetHeight - 16 + 'px';
+	                    if(This.offsetHeight <= 0){
+	                        clearInterval(This.time);
+	                    }
+	                },30);
+	            }               
+	            
+			}		
+			
+		}
+	}
+	</script>
+</head>
+<body>
+<ul class="nav">
+    <li><a href="#">一级菜单</a>
+    	<ul class="subNav">
+        	<li><a href="#">二级菜单</a></li>
+            <li><a href="#">二级菜单</a></li>
+            <li><a href="#">二级菜单</a></li>
+            <li><a href="#">二级菜单</a></li>
+        </ul>
+    </li>
+    <li><a href="#">一级菜单</a>
+    	<ul class="subNav">
+        	<li><a href="#">二级菜单</a></li>
+            <li><a href="#">二级菜单</a></li>
+            <li><a href="#">二级菜单</a></li>
+            <li><a href="#">二级菜单</a></li>
+        </ul>
+    </li>
+    <li><a href="#">一级菜单</a></li>
+    <li><a href="#">一级菜单</a></li>
+    <li><a href="#">一级菜单</a></li>
+</ul>
+</body>
+</html>
