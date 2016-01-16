@@ -1,0 +1,286 @@
+
+<!-- ********************************************************************************* -->
+
+<!-- 时间设置，Date()的使用，setInterval()的使用 -->
+<!--
+<!DOCTYPE HTML>
+  <html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>计时器</title>
+  <script type="text/javascript">
+  var attime
+     function clock(){
+        var time=new Date();  
+        attime=time.getHours()+":"+time.getMinutes()+":"+time.getSeconds();
+        document.getElementById("clock").value = attime;
+     }
+      var i=setInterval(clock,100);
+      function stop(){
+        clearInterval(i)
+      }
+  </script>
+  </head>
+  <body>
+    <form>
+      <input type="text" id="clock" size="50"  />
+      <input type="button" value="Stop" onclick="stop()" />
+      </form>
+  </body>
+  </html>
+-->
+
+<!-- ********************************************************************************* -->
+
+<!-- setTimeout()计时器，在载入后延迟指定时间后,去执行一次表达式,仅执行一次/claerTimeout() -->
+<!--
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>计时器</title>
+  </head>
+
+  </head>
+  <body>
+    <form>
+    <input type="text" id="count" />
+    </form>
+
+    <script type="text/javascript">
+      var num=0;
+      function startCount() {
+        document.getElementById('count').value=num;
+        num=num+1;
+        setTimeout("startCount()",1000); 
+      }
+      startCount();
+    </script>
+  </body>
+</html>
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>计时器</title>
+  </head>
+    <script type="text/javascript">
+      var num=0;
+      function startCount() {
+        document.getElementById('count').value=num;
+        num=num+1;
+        setTimeout("startCount()",1000); //其和setTimeout(startCount(),1000); 等价
+      }
+      setTimeout("startCount()",1000);  //注意和前面的区别，如果此句为startCount();，则js整体代码必须放在body的最后。即在DOM树建立之后才能执行，不然会报错。
+    </script>
+  </head>
+  <body>
+    <form>
+    <input type="text" id="count" />
+    </form>
+  </body>
+</html>
+-->
+
+<!-- ********************************************************************************* -->
+
+<!-- window.history 记录浏览器曾经浏览过的页面 -->
+<!-- window.history.back()/window.history.forward()/window.history.go(),go()中0为当前页面，-1为back()，1为forward() -->
+<!--
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>History对象</title>
+  </head>
+  <script type="text/javascript">
+    var HL = window.history.length   ;
+    document.write(HL);
+  </script>
+  <body>
+  </body>
+</html>
+-->
+
+<!-- ********************************************************************************* -->
+
+<!-- window.location 当前的href。window.location.href 也是显示当前的href，同时可以通过这个句子对当前href进行修改操作。 -->
+<!-- 注意a中的href可以添加javascript代码 -->
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>计时返回页面</title>
+</head>
+<body>
+  <h4>操作成功</h4>
+  <p>
+    <b id="second">5</b>秒后返回到主页<a href="javascript:goBack();">返回</a>
+  </p>
+  <script type="text/javascript">
+    var sec = document.getElementById('second');
+    var i = sec.textContent;
+    var time = setInterval(function(){
+      i --;
+      sec.innerHTML = i;
+      if(i == 0){
+        clearInterval(time);
+        window.location.href =  "http://www.imooc.com/";
+      }
+    },1000);
+
+    function goBack(){
+      window.history.back();
+    }
+  </script>
+</body>
+</html>
+-->
+
+<!-- ********************************************************************************* -->
+
+<!-- Navigator 对象包含有关浏览器的信息，通常用于检测浏览器与操作系统的版本。 -->
+
+<!-- ********************************************************************************* -->
+
+<!--
+  屏幕实际宽高：screen.width/screen.height
+  窗口可以使用的屏幕宽高，即减去页面特性，如底部任务栏：screen.availWidth/screen.availHeight
+-->
+
+<!-- ********************************************************************************* -->
+
+<!--
+  获取元素还有getElementsByName()，多用在input中，因为input有name属性
+  取input框内输入的值，为.value
+-->
+
+<!-- 下面例子主要看checked属性的使用，即还没有存在的时候就可以直接用checked，而不需要再setAttribute。另，注意parseInt(j)的使用，在用value获取input框内值之后，一般都需要用这个参数。 -->
+<!--
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+        <title>无标题文档</title>
+    </head>
+    
+    <body>
+        <form>
+          请选择你爱好:<br>
+          <input type="checkbox" name="hobby" id="hobby1">  音乐
+          <input type="checkbox" name="hobby" id="hobby2">  登山
+          <input type="checkbox" name="hobby" id="hobby3">  游泳
+          <input type="checkbox" name="hobby" id="hobby4">  阅读
+          <input type="checkbox" name="hobby" id="hobby5">  打球
+          <input type="checkbox" name="hobby" id="hobby6">  跑步 <br>
+          <input type="button" value = "全选" onclick = "checkall();">
+          <input type="button" value = "全不选" onclick = "clearall();">
+          <p>请输入您要选择爱好的序号，序号为1-6:</p>
+          <input id="wb" name="wb" type="text" >
+          <input name="ok" type="button" value="确定" onclick = "checkone();">
+        </form>
+        <script type="text/javascript">
+        function checkall(){
+            var hobby = document.getElementsByTagName("input");
+           
+            for(var i = 0; i < hobby.length; i ++){
+                if(hobby[i].getAttribute("type") == "checkbox"){
+                    hobby[i].checked = true;
+                }
+            }
+           
+        }
+        function clearall(){
+            var hobby = document.getElementsByName("hobby");
+            
+            for(var i = 0; i < hobby.length; i ++){
+                hobby[i].checked = false;
+            }   
+            
+        }
+        
+        function checkone(){
+            var j=document.getElementById("wb").value;
+            
+            if(1 <= j <= 6){
+                var hobby = document.getElementById("hobby" + parseInt(j));
+                hobby.checked = true;                
+            }         
+        }       
+        </script>
+    </body>
+</html>
+-->
+
+<!-- ********************************************************************************* -->
+
+<!-- DOM节点相关 -->
+<!--
+一. nodeName:节点的名称; 2. nodeValue:节点的值; 3. nodeType:节点的类型
+二. nodeValue 属性：节点的值
+    1. 元素节点的 nodeValue 是 undefined 或 null
+    2. 文本节点的 nodeValue 是文本自身
+    3. 属性节点的 nodeValue 是属性的值(注意什么是属性节点)
+三. eg：<p title="example">This is an example!</p>中，p为元素节点，下面有两个节点，属性节点title="example"和文本节点This is an example!
+四. 取childNodes时需要注意：节点之间的空白符，在firefox、chrome、opera、safari浏览器是文本节点；ie则忽略空白符。空白符是从父元素的标签紧贴着出现的，无论空白多长，都标记为一个空白符。
+五. parentNode,父节点只能有一个
+六. appendChild():在指定节点的最后一个子节点列表之后添加一个新的子节点。//appendChild(newnode);
+    insertBefore():insertBefore() 方法可在已有的子节点前插入一个新的子节点。//insertBefore(newnode,node);
+    removeChild():removeChild() 方法从子节点列表中删除某个节点。如删除成功，此方法可返回被删除的节点，如失败，则返回 NULL。如要彻底删除，则需要将返回值赋为null，不然节点还存在于返回值中。//nodeObject.removeChild(node);
+    //如果要删除自己，则执行node.parentNode.removeChild(node);
+    replaceChild():replaceChild 实现子节点(对象)的替换。返回被替换对象的引用。 //node.replaceChild (newnode,oldnew ) 
+-->
+<!--
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="demo">
+      <div id="thisNode">点击删除我</div>
+    </div>
+    <script type="text/javascript">
+      document.getElementById("thisNode").onclick=function(){
+      this.parentNode.removeChild(this);
+    }
+    </script>
+  </body>
+</html>
+-->
+<!--
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>无标题文档</title>
+  </head>
+
+  <body>
+  <div id="content">
+    <h1>html</h1>
+    <h1>php</h1>
+    <h1>javascript</h1>
+    <h1>jquery</h1>
+    <h1>java</h1>
+  </div>
+
+  <script type="text/javascript">
+  function clearText() {
+    var content=document.getElementById("content");
+    var num = content.childNodes.length;
+    for(i = num - 1; i >= 0; i --){
+        content.removeChild(content.childNodes[i]);
+    }  //注意此处用倒序而不是正序，因为每次删除后，childNodes的序列号会改变。
+  }
+  </script>
+
+  <button onclick="clearText()">清除节点内容</button>
+
+  </body>
+</html>
+-->
