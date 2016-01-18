@@ -232,6 +232,8 @@
     removeChild():removeChild() 方法从子节点列表中删除某个节点。如删除成功，此方法可返回被删除的节点，如失败，则返回 NULL。如要彻底删除，则需要将返回值赋为null，不然节点还存在于返回值中。//nodeObject.removeChild(node);
     //如果要删除自己，则执行node.parentNode.removeChild(node);
     replaceChild():replaceChild 实现子节点(对象)的替换。返回被替换对象的引用。 //node.replaceChild (newnode,oldnew ) 
+七. 增加节点：
+    createElement()/createTextNode()
 -->
 <!--
 <!DOCTYPE html>
@@ -284,3 +286,143 @@
   </body>
 </html>
 -->
+
+<!-- ********************************************************************************* -->
+
+<!--
+  【"conclick"相关】
+1、事件处理函数：
+  <a href="http://www.example.com" onclick="del();return flase;">可以保证在点击时调用del()函数，而不引发默认的"http://www.example.com"网址的跳转[该方案可以平稳退化]。<a href="javascript:;" onclick="del()">利用伪协议"javascript:"也可以达到类似效果，但是存在问题是在较老浏览器中会去尝试打开那个链接而失败，同时支持伪协议但禁用javascript功能的浏览器会什么也不做[该方案不可以平稳退化]。
+2、上面例子中的onclick，里面的函数del()可以为del(this);表示传入事件对象；也可以为del("A","B");表示传入参数A和B。
+-->
+
+<!-- 【尤其注意】table的子元素是text空节点和tbody节点，而tr和td都在tbody节点中，所以需要获取table的最后一个子节点元素才行。注意下面例子的del(obj)函数。 -->
+
+<!--
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>  
+  <meta charset="UTF-8"> 
+  <script type="text/javascript"> 
+  
+      window.onload = function(){
+                  
+     // 鼠标移动改变背景,可以通过给每行绑定鼠标移上事件和鼠标移除事件来改变所在行背景色。
+        var Tr= document.getElementsByTagName("tr");
+        for(i = 0; i < Tr.length; i ++){
+          Tr[i].onmouseover = function(){
+            this.style.backgroundColor = "#f2f2f2";  //！！注意此处应该为this而不是Tr[i]
+          }
+          Tr[i].onmouseout = function(){
+            this.style.backgroundColor = "#fff";
+          }
+        }
+    
+      /*var tr=document.getElementsByTagName("tr");
+        for(var i= 0;i<tr.length;i++){
+              bgcChange(tr[i]);
+        }
+        
+        function bgcChange(obj){
+          obj.onmouseover=function(){
+            obj.style.backgroundColor="#f2f2f2";
+          }
+          obj.onmouseout=function(){
+            obj.style.backgroundColor="#fff";
+          }
+        }*/
+   
+   }
+     
+      // 编写一个函数，供添加按钮调用，动态在表格的最后一行添加子节点；
+      function add(){
+          var aTable = document.getElementById("table").lastChild;
+          var nTh = document.createElement("th");
+          var nTr = document.createElement("tr");
+          for(var i = 0; i < 3; i ++){
+              if(i == 2){
+                nTh.innerHTML = "<a href=\"javascript:;\" onclick=\"del(this)\">删除</a>";
+              }            
+              nTr.appendChild(nTh);
+              nTh = document.createElement("th");
+
+          }
+          aTable.appendChild(nTr);
+      }
+        
+     
+     // 创建删除函数
+     function del(obj){
+          var aTable = document.getElementById("table").lastChild;  //!!特别注意此处！！使用了.lastChild才是真正取到了table元素（即包含有tr和th的tbody节点）。
+          var aTr = obj.parentNode.parentNode;
+          aTable.removeChild(aTr);
+     }
+
+
+  </script> 
+ </head> 
+ <body> 
+     <table border="1" width="50%" id="table">
+     <tr>
+    <th>学号</th>
+    <th>姓名</th>
+    <th>操作</th>
+     </tr>  
+
+     <tr>
+    <td>xh001</td>
+    <td>王小明</td>
+    <td><a href="javascript:;" onclick="del(this)">删除</a></td>  
+     </tr>
+
+     <tr>
+    <td>xh002</td>
+    <td>刘小芳</td>
+    <td><a href="javascript:;" onclick="del(this)">删除</a></td>  
+     </tr>  
+
+     </table>
+     <input type="button" value="添加一行" onclick="add()" />   
+ </body>
+</html>
+-->
+
+<!-- ********************************************************************************* -->
+
+1、静态作用域(又称词法作用域)：由程序定义的位置决定，与代码执行顺序无关。在编译阶段就决定了变量的引用。
+   动态作用域：由程序运行时刻决定，与代码执行顺序有关。以栈的形式储存变量，读取时也按栈的顺序读取，即取离栈顶最近的值。
+2、JS变量作用域：JS使用静态作用域，JS没有块级作用域(全局作用域、函数作用域)，ES5中使用词法环境管理静态作用域
+3、函数声明和函数表达式：函数声明的函数对象是提前创建的，函数表达式的函数对象是执行到这一条语句的时候才创建的。即这两个都会创建一个内部的函数对象，只是创建的时间不同而已。
+eg: function f(){
+      alert(foo);
+    }   //函数声明
+    (function(){
+      alert(foo);
+    })();  //匿名函数表达式
+    (function A(){
+      A=1;
+      alert(A);  //此处的A是不能被改写的，故虽然前面被改写为1，但是实际上其值还是为函数A
+    })();  //带名称的函数表达式    
+    f();  
+4、闭包:作用为保存现场&封装
+        function addHandlers(nodes){
+          for(var i = 0; i < nodes.length; i ++){
+            nodes[i].onclick = function() {
+              alert(i);
+            }
+          }
+        }
+
+  解释：匿名函数的外层作用域(outer)为addHandlers的环境;addHandlers的环境里有形参nodes同时定义了一个i,初始化时为undefined,当循环开始时，第一次i会被赋值为0;addHandlers的outer为全局环境(global Environment);虽然循环里每调用一次nodes[i].onclick都会创建一个匿名函数，但可以发现这些匿名函数的外层环境都是一样的，由于外层环境只和定义时有关系，故其outer都是addHandlers的环境(从第一句可以发现);当这个匿名函数开始执行的时候，其找的都是addHandlers这个环境里的i;在这个循环里，如果只是事先定义的话，这些匿名函数并不会执行，只有在点击函数的之后其才会执行，也就是说，在注册事件时这些函数是不会执行的;当事件注册完，即循环执行完后，addHandlers里面的i等于nodes.length;当我们在页面上去点击某一行时，其就会执行匿名函数，在执行匿名函数之前，就会沿着匿名函数的作用域链去找，它就会找到addHandlers里面的i，此时这个i值已经变为了nodes.length。所以，一旦写成这种方式，无论你在什么时候也无论循环执行了多少次，最后当事件处理函数(本例中为这个执行弹出i操作的匿名函数)开始执行的时候，其弹出i都是一样的，因为它都是指向了addHandlers里面的i，故无论移到哪一个nodes，其弹出的i都是同一个值为nodes.length。
+        function addHandlers(nodes){
+          function helper(i) {
+            return funcyion() {
+              alert(i);
+            } 
+          }
+          for(var i = 0; i < nodes.length; i ++){
+            nodes[i].onclick = helper(i);
+          }
+        }
+  解释：
