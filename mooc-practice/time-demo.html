@@ -406,6 +406,7 @@ eg: function f(){
     })();  //带名称的函数表达式    
     f();  
 4、闭包:作用为保存现场&封装
+4.1保存现场
         function addHandlers(nodes){
           for(var i = 0; i < nodes.length; i ++){
             nodes[i].onclick = function() {
@@ -425,4 +426,23 @@ eg: function f(){
             nodes[i].onclick = helper(i);
           }
         }
-  解释：
+  解释：匿名函数的outer为helper的环境，helper的outer为addHandlers的环境;helper函数的执行结果为一个匿名函数，这个匿名函数就是一个闭包，因为这个匿名函数引用了外部词法环境中helper的形参i，所以每调用一次helper函数，这个helper函数都会返回一个闭包，i的值就被这个闭包保存起来了;所以在这个例子里，最后这个匿名函数执行的时候引用的i不是addHandlers里定义的i，而是helper的词法环境里定义的i；在循环体里，helper函数会执行很多次，即每调用一次循环就会执行一次helper，每次调用helper时其都会独立创建一个环境，因为每次helper执行前都会独立创建一个环境，这些环境中的i彼此之间是独立的，是不会彼此有影响的(比如helper(0)和helper(1)是有各自有各自环境的)。故每执行一次循环，就创建一个闭包，而这个闭包里就会保存传入的i值。当点击页面上某一行时，实际上就弹出其当时保存在闭包里的i的值。
+4.2模块封装
+    var observer = (function() {
+      var observerList = [];
+      return {
+        add: function(obj) {
+          observerList.push(obj);
+        },
+        empty: function() {
+          observerList = [];
+        },
+        getCount: function() {
+          return observerList.length;
+        },
+        get: function() {
+          return observerList;
+        }
+      }
+    })();
+  解释：由于闭包是一个函数作用域，其很好地实现了信息隐藏的作用。外部变量是不能访问到内部的变量，而内部变量可以访问到外部的变量。使用闭包实现封装，可以让封装出来的对象只暴露接口，而其内部可以共享自由变量，也就是说他可以把有一些变量不暴露给外部变量，即把私有变量放到闭包里作为自由变量，然后返回一个对象，这个对象只对外部暴露接口
