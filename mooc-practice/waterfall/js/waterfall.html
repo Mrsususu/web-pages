@@ -1,0 +1,245 @@
+<!--
+瀑布流功能：
+	1、类似"蘑菇街"网站，第一行顺序排列，第二行第一个放在第一行最短的地方，第二个放在第一行次短的地方，依次排列。
+	2、最后一张图片A露出其高度一半后，开始加载A图片。(当然也可以图片一露出就加载，依具体需求而定)
+瀑布流布局特点:1.等宽不等高；2.向下拖动则不断加载
+瀑布流实现方法:1.js实现；2.jQuery实现；3.css3的多栏布局
+瀑布流原理：加载图片时，所有图片的位置是先通过计算得到其位置，然后通过绝对定位将其定位到应该处于的位置中
+【js方案】
+	1、由于后面要用到offsetHeight，故边距用padding设置而不是margin
+
+IE6.0、FF1.06+：
+	clientWidth = width + padding
+	clientHeight = height + padding
+	offsetWidth = width + padding + border
+	offsetHeight = height + padding + border
+	offsetTop为盒子顶部和其父盒子顶部之间的距离，而不仅仅是和可视窗口顶部之间的距离。
+
+IE5.0/5.5：
+	clientWidth = width - border
+	clientHeight = height - border
+	offsetWidth = width
+	offsetHeight = height
+
+	2、注意apply()和call()的使用：http://www.w3school.com.cn/js/pro_js_inheritance_implementing.asp
+	他们的用途都是改变函数或者对象中this的指向。
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>waterfall</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body>
+	<div id="main">
+		<div class="box">
+			<div class="pic">
+				<img src="images/0.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/1.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/2.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/3.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/4.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/5.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/6.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/7.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/8.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/9.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/10.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/11.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/12.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/13.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/14.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/15.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/16.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/17.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/18.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/19.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/20.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/31.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/32.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/33.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/34.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/35.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/36.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/37.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/38.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/39.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/40.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/41.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/42.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/43.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/44.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/45.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/46.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/47.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/48.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/49.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="pic">
+				<img src="images/50.jpg">
+			</div>
+			</div>
+	</div>
+	
+</body>
+</html>
