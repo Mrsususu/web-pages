@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>弹出登录框</title>
+<style type="text/css">
+    html,body {
+        font-family: "微软雅黑";
+        font-size:62.5%;
+        width:100%;
+        height:100%;
+        padding: 0px;
+        margin: 0px;
+    }
+    input {
+        background: none;
+    }
+    input:hover,input:active,input:focus,input:visited {border:none !important;}
+    .boxDom {
+        width:100%;
+        height:100%;
+        position: relative;
+    }
+    .divBox {
+        width: 100%;
+        height: 100%;
+        background-image: url(bg.jpg);
+        background-position: center 0; 
+        background-repeat: no-repeat; 
+        background-attachment:fixed; 
+        background-size: cover; 
+        -webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */ 
+        -o-background-size: cover;/* 兼容Opera */
+        opacity:0;
+        zoom: 1; 
+        position: relative;
+    }
+    .loginDom {
+        position: absolute;
+        top:0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin:auto;
+        width:30rem;
+        height: 20rem;
+        background: #fdf8f2;
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        -ms-border-radius: 20px;
+        -moz-border-radius: 20px;
+        -o-border-radius: 20px;
+        box-shadow: 0px 4px 6px #333;
+        padding:50px;
+    }
+    .closeBox {
+        width:3rem;
+        height:3rem;
+        color:#fff;
+        font-size:2.4rem;
+        line-height: 3rem;
+        text-align: center;
+        border-radius: 50%;
+        position: absolute;
+        top:10px;
+        right:10px;
+        background: rgba(200,200,200,.4);
+    }
+    .closeBox:hover {
+        background: #ccc;
+        cursor: pointer;
+    }
+    .form-group {
+        width:100%;
+        height:4rem;
+        border-bottom:2px solid #ccc;
+        margin-top:10px;
+        position: relative;
+        color:#aaa;
+    }
+    .form-group>label {
+        display: inline-block;
+        font-size:2rem;
+        line-height: 3.5rem;
+        width:30px;
+        height:3.5rem;
+        float: left;
+    }
+    .form-group>input.userName,.form-group>input.pwd {
+        width:26rem;
+        height:3.5rem;
+        border:0px;
+        color:#aaa;
+        background: none;
+        font-size:2rem;
+    }
+    .form-group>input:active,.form-group>input.pwd:hover {
+        border:0px;
+    }
+    .form-group:last-of-type>input.chk {
+        width:1.4rem;
+        height:1.4rem;
+        vertical-align: middle;
+    }
+    .form-group:last-of-type {
+        border:0px;
+        height:3rem;
+        font-size: 1.6rem;        
+    }
+    .btn-info {
+        width:30rem;
+        height:4rem;
+        position: absolute;
+        left: 0px;
+        right:0px;
+        margin:10px auto; 
+        background: #66bd78;
+        border: none;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;  
+        color:#fff;
+        font-size:2.4rem;
+    }
+    .loginBtn {
+        position: absolute;
+        width:10rem;
+        height:4rem;
+        top: 0px;
+        bottom:0px;
+        left:0px;
+        right:0px;
+        margin:auto;
+        top:0px;
+    }
+    .warnInfo {
+        position: absolute;
+        color:#f00;
+        left:0px;
+        right:0px;
+        bottom:2rem;
+        margin: auto;
+        width:30rem;
+        height:2rem;
+        font-size: 1.6rem;
+        text-align: center;
+        line-height: 2rem;
+    }
+</style>
+</head>
+
+<body>
+<div class="boxDom">
+    <div class="divBox" id="divBox">
+        <div class="loginDom" id="loginDom">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label>名:</label>
+                    <input type="text" class="userName" id="userName">
+                </div>
+                <div class="form-group">
+                    <label>密:</label>
+                    <input type="password" class="pwd" id="pwd">
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" class="chk" id="chk">记住账号
+                </div>
+                <button type="button" class="btn btn-info" id="btnInfo">登陆</button>
+            </form>
+            <span class="closeBox" id="closeBox">X</span>
+        </div>
+    </div>
+    <button type="button" class="loginBtn" id="loginBtn">立即登陆</button>
+</div>
+</body>
+<script type="text/javascript">
+	(function(){
+		var Obj={
+			"$":function(Id){
+				var IdDom=typeof(Id) == "string"?document.getElementById(Id):Id;
+				return IdDom;
+			},
+			"bindEvent":function(dom,eType,funs){
+				if(dom.addEventListener){
+					dom.addEventListener(eType,funs,false);
+				}else if(window.attachEvent){
+					dom.attachEvent("on"+eType,funs);
+				}else{
+					dom.on[eType]=funs;
+				}
+			},
+			"getEvent":function(){
+				var evt=window.event || arguments.callee.caller.arguments[0];
+				var target=evt.target || evt.srcElement;
+				return target;
+			},
+            "createElement":function(str,parentDom){
+                var div1=document.createElement("div");
+                div1.className="warnInfo";
+				div1.setAttribute("id","warnInfo");
+                div1.innerHTML=str;
+                parentDom.appendChild(div1);
+            }
+		}
+        var idDom=Obj.$("loginBtn");
+        var loginDom=Obj.$("loginDom");
+        var loginBtn=Obj.$("btnInfo");
+		var closeDom=Obj.$("closeBox");
+		var boxDom=Obj.$("divBox");
+        var userName=Obj.$("userName");
+        var pwd=Obj.$("pwd");
+        var chk=Obj.$("chk");
+        var num=0,info,str;
+        var localStorage=window.localStorage;
+        Obj.bindEvent(loginBtn,"click",funs1);
+		Obj.bindEvent(idDom,"click",auto);
+		Obj.bindEvent(closeDom,"click",auto);
+		Obj.bindEvent(userName,"focus",funs2);
+		Obj.bindEvent(pwd,"focus",funs2);
+        //登录提示函数
+		function funs1(){
+			if(userName.value == ""){
+				str="用户名不能为空!";
+				Obj.createElement(str,loginDom);
+			}else if(pwd.value == ""){
+				str="密码不能为空!";
+				Obj.createElement(str,loginDom);
+			}else if(chk.checked){
+				if(!localStorage.getItem("userName")){
+					localStorage.setItem("userName",userName.value);
+				}
+                window.location.href="file:///C:/Users/Administrator/Desktop/admin.html";
+            }else if(!chk.checked){
+				localStorage.removeItem("userName");
+                window.location.href="file:///C:/Users/Administrator/Desktop/admin.html";
+			}
+		}
+		userName.value=localStorage.getItem("userName");
+        //关闭warn警告栏
+        function funs2(){
+			var warnDom=Obj.$("warnInfo");
+			loginDom.removeChild(warnDom);
+		}        
+        //触发加载透明函数
+		function auto(){
+			var target=Obj.getEvent();
+			var classStr=target.className;
+			if(classStr == "loginBtn"){
+				target.style.display="none"
+				info=setInterval(show,100);
+			}else{
+				info=setInterval(hid,100);
+			}
+		}
+        //登录界面显示
+		function show(){
+			num+=0.1;
+			if(num<1){
+				boxDom.style.opacity=num;
+			}else {
+				clearInterval(info);
+			}
+		}
+        //登录界面隐藏
+		function hid(){
+			num-=0.1;
+			if(num>0){
+				boxDom.style.opacity=num;
+			}else{
+				clearInterval(info);
+				idDom.style.display="block";
+			}
+		}
+})();
+</script>
+</html>
